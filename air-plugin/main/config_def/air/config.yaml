@@ -1,0 +1,22 @@
+Ark: false
+MsgUrl: ""
+msgReset: false
+Ark_users:
+  - "00000"
+Ark_set:
+  Text_wx: ""
+  Text: ""
+  img_bt: ""
+  img_xbt: ""
+button:
+  open: false
+  btn_users:
+    - "114514"
+  template: 114_514
+msgServer:
+  open: false
+  userbot: "114"
+  robot: "514"
+  group:
+    - "12345"
+tts_token: tE4bE1jR9jR4nM5tP0zM9pH1mK0xF2yM

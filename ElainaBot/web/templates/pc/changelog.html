@@ -1,0 +1,878 @@
+{% extends "pc/base.html" %}
+
+{% block content %}
+<div class="changelog-page">
+    <div class="changelog-header">
+        <div class="header-content">
+            <div class="header-title">
+                <div class="header-icon"><i class="bi bi-clock-history"></i></div>
+                <div>
+                    <h4>系统更新</h4>
+                    <p>版本管理与更新日志</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" onclick="showSourceSelector()"><i class="bi bi-cloud-download"></i> 下载源</button>
+                <button class="action-btn" onclick="showUploadModal()"><i class="bi bi-upload"></i> 上传更新</button>
+                <button class="action-btn" onclick="checkUpdate()"><i class="bi bi-search"></i> 检查更新</button>
+                <button class="action-btn warning" onclick="forceUpdate()"><i class="bi bi-arrow-repeat"></i> 强制更新</button>
+                <button class="action-btn primary" id="update-btn" onclick="startUpdate()" style="display: none;"><i class="bi bi-download"></i> 立即更新</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下载源选择弹窗 -->
+    <div id="source-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content source-modal">
+            <div class="modal-header">
+                <h5><i class="bi bi-cloud-download"></i> 选择下载源</h5>
+                <button class="close-btn" onclick="closeSourceModal()"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="source-tip">如果默认代理服务器无法连接，可以尝试切换到其他下载源</p>
+                <div id="source-list" class="source-list">
+                    <div class="loading-state"><div class="spinner-sm"></div> 加载中...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传更新弹窗 -->
+    <div id="upload-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content upload-modal">
+            <div class="modal-header upload-header">
+                <h5><i class="bi bi-upload"></i> 上传压缩包更新</h5>
+                <button class="close-btn" onclick="closeUploadModal()"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="upload-tip">上传框架压缩包进行手动更新，支持 ZIP 格式</p>
+                <div class="upload-area" id="upload-area" onclick="document.getElementById('upload-input').click()">
+                    <input type="file" id="upload-input" accept=".zip" style="display: none;" onchange="handleFileSelect(event)">
+                    <div class="upload-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                    <div class="upload-text">点击选择或拖拽文件到此处</div>
+                    <div class="upload-hint">仅支持 .zip 格式</div>
+                </div>
+                <div id="selected-file" class="selected-file" style="display: none;">
+                    <i class="bi bi-file-earmark-zip"></i>
+                    <span id="selected-filename"></span>
+                    <button class="remove-file-btn" onclick="clearSelectedFile()"><i class="bi bi-x"></i></button>
+                </div>
+                <div class="version-input">
+                    <label for="version-name">版本名称（可选）</label>
+                    <input type="text" id="version-name" placeholder="留空则自动生成">
+                </div>
+                <div class="update-options" style="margin-top: 1rem;">
+                    <label class="option-item">
+                        <input type="checkbox" id="upload-skip-backup-checkbox">
+                        <span class="option-text">
+                            <i class="bi bi-lightning-charge"></i> 跳过备份（更快，但无法回滚）
+                        </span>
+                    </label>
+                </div>
+                <div class="upload-actions">
+                    <button class="cancel-btn" onclick="closeUploadModal()">取消</button>
+                    <button class="upload-btn" id="start-upload-btn" onclick="startUploadUpdate()" disabled>
+                        <i class="bi bi-cloud-upload"></i> 开始更新
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 配置差异弹窗 -->
+    <div id="config-diff-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content config-modal">
+            <div class="modal-header warning-header">
+                <h5><i class="bi bi-exclamation-triangle-fill"></i> 发现配置差异</h5>
+                <button class="close-btn" onclick="closeConfigModal()"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="config-tip">新版本包含以下新增配置项，建议补全以避免启动失败：</p>
+                <div id="config-diff-list" class="config-diff-list"></div>
+                <div class="config-actions">
+                    <button class="skip-btn" onclick="closeConfigModal()">暂不处理</button>
+                    <button class="apply-btn" onclick="applyConfigDiff()"><i class="bi bi-magic"></i> 自动补全</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 更新确认弹窗 -->
+    <div id="update-confirm-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content update-confirm-modal">
+            <div class="modal-header">
+                <h5><i class="bi bi-download"></i> 确认更新</h5>
+                <button class="close-btn" onclick="closeUpdateConfirmModal()"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="update-confirm-tip" id="update-confirm-tip">确定要更新框架吗？</p>
+                <div class="update-options">
+                    <label class="option-item">
+                        <input type="checkbox" id="skip-backup-checkbox">
+                        <span class="option-text">
+                            <i class="bi bi-lightning-charge"></i> 跳过备份（更快，但无法回滚）
+                        </span>
+                    </label>
+                </div>
+                <div class="update-confirm-actions">
+                    <button class="cancel-btn" onclick="closeUpdateConfirmModal()">取消</button>
+                    <button class="confirm-btn" id="confirm-update-btn" onclick="confirmUpdate()">
+                        <i class="bi bi-check-lg"></i> 确认更新
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card version-card">
+            <div class="card-icon"><i class="bi bi-tag-fill"></i></div>
+            <div class="card-content">
+                <div class="card-label">当前版本</div>
+                <div class="card-value" id="current-version"><div class="spinner-sm"></div></div>
+                <div class="card-sub" id="version-update-time"></div>
+            </div>
+        </div>
+        <div class="info-card status-card" id="update-status-card">
+            <div class="card-icon"><i class="bi bi-check-circle-fill"></i></div>
+            <div class="card-content">
+                <div class="card-label">更新状态</div>
+                <div class="card-value" id="update-status-text">点击检查更新</div>
+                <div class="card-sub" id="latest-version-text"></div>
+            </div>
+        </div>
+        <div class="info-card source-card">
+            <div class="card-icon"><i class="bi bi-cloud-download"></i></div>
+            <div class="card-content">
+                <div class="card-label">下载源</div>
+                <div class="card-value" id="current-source-name">加载中...</div>
+                <div class="card-sub" id="current-source-desc"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="update-progress-section" class="progress-section" style="display: none;">
+        <div class="progress-header">
+            <i class="bi bi-arrow-repeat spin"></i>
+            <span id="progress-stage">正在更新...</span>
+        </div>
+        <div class="progress-bar-wrapper">
+            <div class="progress-bar" id="update-progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="progress-text" id="progress-message">准备中...</div>
+    </div>
+
+    <div class="changelog-section">
+        <div class="section-header">
+            <div class="section-title"><i class="bi bi-list-ul"></i> 更新日志</div>
+            <button class="refresh-btn" onclick="refreshChangelog()"><i class="bi bi-arrow-clockwise"></i> 刷新</button>
+        </div>
+        <div class="changelog-content">
+            <div id="loading-container" class="loading-state"><div class="spinner"></div><span>正在获取更新日志...</span></div>
+            <div id="error-container" class="error-state" style="display: none;"><i class="bi bi-exclamation-triangle"></i><span id="error-message">加载失败</span><button class="retry-btn" onclick="refreshChangelog()">重试</button></div>
+            <div id="changelog-container" class="changelog-list" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let changelogData = [], latestVersion = null, currentSource = 'proxy', availableSources = {}, pendingConfigDiff = null, selectedFile = null;
+const getToken = () => new URLSearchParams(window.location.search).get('token') || '';
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadDownloadSources();
+    loadChangelog();
+    loadVersionInfo();
+});
+
+async function loadDownloadSources() {
+    try {
+        const result = await (await fetch(`/web/api/update/sources?token=${getToken()}`)).json();
+        if (result.success) {
+            availableSources = result.data.sources;
+            currentSource = result.data.current;
+            updateSourceDisplay();
+        }
+    } catch (e) {
+        console.error('加载下载源失败:', e);
+    }
+}
+
+function updateSourceDisplay() {
+    const source = availableSources[currentSource];
+    if (source) {
+        document.getElementById('current-source-name').textContent = source.name;
+        document.getElementById('current-source-desc').textContent = source.description;
+    }
+}
+
+function showSourceSelector() {
+    document.getElementById('source-modal').style.display = 'flex';
+    renderSourceList();
+}
+
+function closeSourceModal() {
+    document.getElementById('source-modal').style.display = 'none';
+}
+
+// 上传更新相关函数
+function showUploadModal() {
+    document.getElementById('upload-modal').style.display = 'flex';
+    clearSelectedFile();
+}
+
+function closeUploadModal() {
+    document.getElementById('upload-modal').style.display = 'none';
+    clearSelectedFile();
+}
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (file) {
+        if (!file.name.toLowerCase().endsWith('.zip')) {
+            showToast('只支持 ZIP 格式的压缩包', 'error');
+            return;
+        }
+        selectedFile = file;
+        document.getElementById('selected-file').style.display = 'flex';
+        document.getElementById('selected-filename').textContent = file.name + ' (' + formatFileSize(file.size) + ')';
+        document.getElementById('upload-area').style.display = 'none';
+        document.getElementById('start-upload-btn').disabled = false;
+    }
+}
+
+function clearSelectedFile() {
+    selectedFile = null;
+    document.getElementById('upload-input').value = '';
+    document.getElementById('selected-file').style.display = 'none';
+    document.getElementById('upload-area').style.display = 'flex';
+    document.getElementById('start-upload-btn').disabled = true;
+    document.getElementById('version-name').value = '';
+}
+
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+async function startUploadUpdate() {
+    if (!selectedFile) {
+        showToast('请先选择文件', 'error');
+        return;
+    }
+    
+    const skipBackup = document.getElementById('upload-skip-backup-checkbox').checked;
+    
+    closeUploadModal();
+    document.getElementById('update-progress-section').style.display = 'block';
+    document.getElementById('progress-stage').textContent = '上传中...';
+    document.getElementById('progress-message').textContent = '正在上传文件...';
+    document.getElementById('update-progress-bar').style.width = '10%';
+    
+    try {
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        const versionName = document.getElementById('version-name').value.trim();
+        if (versionName) {
+            formData.append('version_name', versionName);
+        }
+        if (skipBackup) {
+            formData.append('skip_backup', 'true');
+        }
+        
+        const result = await (await fetch(`/web/api/update/upload?token=${getToken()}`, {
+            method: 'POST',
+            body: formData
+        })).json();
+        
+        if (result.success) {
+            pollUpdateProgress();
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (e) {
+        document.getElementById('progress-stage').textContent = '上传失败';
+        document.getElementById('progress-message').textContent = e.message;
+        document.getElementById('update-progress-section').className = 'progress-section failed';
+    }
+}
+
+// 拖拽上传支持
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadArea = document.getElementById('upload-area');
+    if (uploadArea) {
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        });
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('upload-input').files = files;
+                handleFileSelect({target: {files: files}});
+            }
+        });
+    }
+    
+    // 点击弹窗外部关闭
+    document.getElementById('upload-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) closeUploadModal();
+    });
+});
+
+function renderSourceList() {
+    const container = document.getElementById('source-list');
+    if (!Object.keys(availableSources).length) {
+        container.innerHTML = '<div class="empty-state">暂无可用下载源</div>';
+        return;
+    }
+    
+    // 定义显示顺序
+    const sourceOrder = ['proxy', 'github', 'ghfast', 'github-sha'];
+    const orderedSources = sourceOrder
+        .filter(key => availableSources[key])
+        .map(key => [key, availableSources[key]]);
+    
+    container.innerHTML = orderedSources.map(([key, source]) => `
+        <div class="source-item ${key === currentSource ? 'active' : ''}" data-source="${key}">
+            <div class="source-info">
+                <div class="source-name">
+                    ${source.name}
+                    ${key === currentSource ? '<span class="current-badge">当前</span>' : ''}
+                </div>
+                <div class="source-desc">${source.description}</div>
+            </div>
+            <div class="source-actions">
+                <button class="test-btn" onclick="testSource('${key}', event)">
+                    <i class="bi bi-speedometer2"></i> 测试
+                </button>
+                ${key !== currentSource ? `<button class="select-btn" onclick="selectSource('${key}')">
+                    <i class="bi bi-check-lg"></i> 选择
+                </button>` : ''}
+            </div>
+            <div class="source-status" id="source-status-${key}"></div>
+        </div>
+    `).join('');
+}
+
+async function testSource(source, event) {
+    if (event) event.stopPropagation();
+    const statusEl = document.getElementById(`source-status-${source}`);
+    statusEl.innerHTML = '<i class="bi bi-hourglass-split"></i> 测试中...';
+    statusEl.className = 'source-status testing';
+    
+    try {
+        const result = await (await fetch(`/web/api/update/test_source?token=${getToken()}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({source})
+        })).json();
+        
+        if (result.success && result.data.success) {
+            statusEl.innerHTML = `<i class="bi bi-check-circle-fill"></i> ${result.data.message}`;
+            statusEl.className = 'source-status success';
+        } else {
+            statusEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> ${result.data?.message || result.message}`;
+            statusEl.className = 'source-status error';
+        }
+    } catch (e) {
+        statusEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> 测试失败`;
+        statusEl.className = 'source-status error';
+    }
+}
+
+async function selectSource(source) {
+    try {
+        const result = await (await fetch(`/web/api/update/sources?token=${getToken()}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({source})
+        })).json();
+        
+        if (result.success) {
+            currentSource = source;
+            updateSourceDisplay();
+            renderSourceList();
+            showToast(`已切换到 ${availableSources[source].name}`, 'success');
+            // 重新加载更新日志
+            loadChangelog();
+        } else {
+            showToast(result.message, 'error');
+        }
+    } catch (e) {
+        showToast('切换下载源失败', 'error');
+    }
+}
+
+async function loadVersionInfo() {
+    try {
+        const result = await (await fetch(`/web/api/update/version?token=${getToken()}`)).json();
+        if (result.success) {
+            const info = result.data;
+            document.getElementById('current-version').textContent = info.version || 'unknown';
+            if (info.update_time && info.update_time !== 'unknown') {
+                document.getElementById('version-update-time').textContent = `更新于 ${info.update_time}`;
+            }
+        }
+    } catch (e) {
+        document.getElementById('current-version').textContent = 'unknown';
+    }
+}
+
+async function checkUpdate() {
+    const statusCard = document.getElementById('update-status-card');
+    const statusText = document.getElementById('update-status-text');
+    const latestText = document.getElementById('latest-version-text');
+    const updateBtn = document.getElementById('update-btn');
+    
+    statusCard.className = 'info-card status-card checking';
+    statusCard.querySelector('.card-icon i').className = 'bi bi-hourglass-split';
+    statusText.textContent = '正在检查...';
+    latestText.textContent = '';
+    updateBtn.style.display = 'none';
+    
+    try {
+        const result = await (await fetch(`/web/api/update/check?token=${getToken()}`)).json();
+        if (result.success) {
+            const data = result.data;
+            if (data.error) {
+                statusCard.className = 'info-card status-card error';
+                statusCard.querySelector('.card-icon i').className = 'bi bi-x-circle-fill';
+                statusText.textContent = '检查失败';
+                latestText.textContent = data.error;
+                return;
+            }
+            if (data.has_update) {
+                latestVersion = data.latest_version;
+                statusCard.className = 'info-card status-card has-update';
+                statusCard.querySelector('.card-icon i').className = 'bi bi-arrow-up-circle-fill';
+                statusText.textContent = '发现新版本';
+                latestText.textContent = `最新: ${data.latest_version}`;
+                updateBtn.style.display = 'inline-flex';
+            } else {
+                statusCard.className = 'info-card status-card up-to-date';
+                statusCard.querySelector('.card-icon i').className = 'bi bi-check-circle-fill';
+                statusText.textContent = '已是最新版本';
+                latestText.textContent = '';
+            }
+        } else throw new Error(result.message);
+    } catch (e) {
+        statusCard.className = 'info-card status-card error';
+        statusCard.querySelector('.card-icon i').className = 'bi bi-x-circle-fill';
+        statusText.textContent = '检查失败';
+        latestText.textContent = e.message;
+    }
+}
+
+async function startUpdate() {
+    showUpdateConfirmModal(false);
+}
+
+async function forceUpdate() {
+    showUpdateConfirmModal(true);
+}
+
+let pendingForceUpdate = false;
+
+function showUpdateConfirmModal(isForce) {
+    pendingForceUpdate = isForce;
+    const sourceName = availableSources[currentSource]?.name || currentSource;
+    const tip = isForce 
+        ? `将直接下载最新版本，不检查当前版本。<br>当前下载源: <strong>${sourceName}</strong>`
+        : `当前下载源: <strong>${sourceName}</strong>`;
+    document.getElementById('update-confirm-tip').innerHTML = tip;
+    document.getElementById('skip-backup-checkbox').checked = false;
+    document.getElementById('update-confirm-modal').style.display = 'flex';
+}
+
+function closeUpdateConfirmModal() {
+    document.getElementById('update-confirm-modal').style.display = 'none';
+}
+
+async function confirmUpdate() {
+    const skipBackup = document.getElementById('skip-backup-checkbox').checked;
+    closeUpdateConfirmModal();
+    
+    document.getElementById('update-btn').style.display = 'none';
+    document.getElementById('update-progress-section').style.display = 'block';
+    
+    try {
+        const result = await (await fetch(`/web/api/update/start?token=${getToken()}`, { 
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify({source: currentSource, force: pendingForceUpdate, skip_backup: skipBackup})
+        })).json();
+        if (result.success) pollUpdateProgress();
+        else throw new Error(result.message);
+    } catch (e) {
+        document.getElementById('progress-stage').textContent = '更新失败';
+        document.getElementById('progress-message').textContent = e.message;
+    }
+}
+
+let pollInterval = null;
+async function pollUpdateProgress() {
+    if (pollInterval) clearInterval(pollInterval);
+    pollInterval = setInterval(async () => {
+        try {
+            const result = await (await fetch(`/web/api/update/progress?token=${getToken()}`)).json();
+            if (result.success && result.data) {
+                const data = result.data;
+                document.getElementById('update-progress-bar').style.width = data.progress + '%';
+                document.getElementById('progress-message').textContent = data.message || '';
+                
+                if (data.stage === 'completed') {
+                    clearInterval(pollInterval);
+                    document.getElementById('progress-stage').textContent = '更新完成';
+                    document.getElementById('update-progress-section').className = 'progress-section completed';
+                    setTimeout(() => loadVersionInfo(), 1000);
+                    showToast('更新成功！重启框架后生效', 'success');
+                    // 检查配置差异
+                    if (data.config_diff && data.config_diff.has_diff) {
+                        pendingConfigDiff = data.config_diff.missing;
+                        showConfigDiffModal(data.config_diff);
+                    }
+                } else if (data.stage === 'failed') {
+                    clearInterval(pollInterval);
+                    document.getElementById('progress-stage').textContent = '更新失败';
+                    document.getElementById('update-progress-section').className = 'progress-section failed';
+                } else {
+                    const stages = { 'preparing': '准备更新', 'downloading': '下载中', 'backing_up': '备份中', 'updating': '更新中', 'checking': '检查中' };
+                    document.getElementById('progress-stage').textContent = stages[data.stage] || '更新中...';
+                }
+            }
+        } catch (e) {}
+    }, 1000);
+}
+
+function showConfigDiffModal(diff) {
+    const list = document.getElementById('config-diff-list');
+    list.innerHTML = diff.missing.map(item => {
+        if (item.type === 'var') {
+            return `<div class="diff-item"><span class="diff-type var">变量</span><code>${item.name} = ${item.value}</code></div>`;
+        } else if (item.type === 'dict') {
+            return `<div class="diff-item"><span class="diff-type dict">字典</span><code>${item.name}</code></div>`;
+        } else {
+            return `<div class="diff-item"><span class="diff-type key">键</span><code>${item.dict}['${item.key}'] = ${item.value}</code></div>`;
+        }
+    }).join('');
+    document.getElementById('config-diff-modal').style.display = 'flex';
+}
+
+function closeConfigModal() {
+    document.getElementById('config-diff-modal').style.display = 'none';
+    pendingConfigDiff = null;
+}
+
+async function applyConfigDiff() {
+    if (!pendingConfigDiff) return;
+    try {
+        const result = await (await fetch(`/web/api/config/apply_diff?token=${getToken()}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({missing: pendingConfigDiff})
+        })).json();
+        if (result.success) {
+            showToast(`成功补全 ${result.count} 个配置项`, 'success');
+            closeConfigModal();
+        } else {
+            showToast('补全失败: ' + result.message, 'error');
+        }
+    } catch (e) {
+        showToast('补全失败', 'error');
+    }
+}
+
+async function loadChangelog() {
+    document.getElementById('loading-container').style.display = 'flex';
+    document.getElementById('error-container').style.display = 'none';
+    document.getElementById('changelog-container').style.display = 'none';
+    try {
+        const result = await (await fetch(`/web/api/changelog?token=${getToken()}`)).json();
+        if (result.success) {
+            changelogData = result.data;
+            renderChangelog();
+            document.getElementById('loading-container').style.display = 'none';
+            document.getElementById('changelog-container').style.display = 'block';
+        } else throw new Error(result.message);
+    } catch (e) {
+        document.getElementById('loading-container').style.display = 'none';
+        document.getElementById('error-container').style.display = 'flex';
+        document.getElementById('error-message').textContent = e.message;
+    }
+}
+
+function renderChangelog() {
+    const container = document.getElementById('changelog-container');
+    if (!changelogData.length) {
+        container.innerHTML = '<div class="empty-state"><i class="bi bi-inbox"></i><p>暂无更新记录</p></div>';
+        return;
+    }
+    container.innerHTML = changelogData.map((c, i) => `
+        <div class="commit-item ${i === 0 ? 'latest' : ''}">
+            <div class="commit-header">
+                <span class="commit-sha">${c.sha}</span>
+                ${i === 0 ? '<span class="latest-badge">最新</span>' : ''}
+                <span class="commit-date"><i class="bi bi-calendar3"></i> ${c.date}</span>
+            </div>
+            <div class="commit-message">${escapeHtml(c.message)}</div>
+            <div class="commit-footer">
+                <span class="commit-author"><i class="bi bi-person"></i> ${c.author}</span>
+                ${c.url ? `<a href="${c.url}" target="_blank" class="commit-link"><i class="bi bi-box-arrow-up-right"></i> 查看</a>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+function refreshChangelog() { loadChangelog(); loadVersionInfo(); }
+function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+function showToast(msg, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast-msg ${type}`;
+    toast.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'}-fill"></i> ${msg}`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+// 点击弹窗外部关闭
+document.getElementById('source-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeSourceModal();
+});
+document.getElementById('update-confirm-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeUpdateConfirmModal();
+});
+</script>
+
+<style>
+.changelog-page { padding: 1rem; }
+
+.changelog-header {
+    background: var(--theme-gradient);
+    border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.header-title { display: flex; align-items: center; gap: 1rem; color: #fff; }
+.header-icon { width: 56px; height: 56px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.header-title h4 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+.header-title p { margin: 4px 0 0; font-size: 0.85rem; opacity: 0.85; }
+.header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.action-btn { padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border: none; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+.action-btn:hover { background: rgba(255,255,255,0.3); }
+.action-btn.primary { background: #fff; color: var(--primary-color); }
+.action-btn.primary:hover { background: #f0f0f0; }
+.action-btn.warning { background: rgba(245, 158, 11, 0.9); color: #fff; }
+.action-btn.warning:hover { background: rgba(217, 119, 6, 1); }
+
+/* 上传更新弹窗 */
+.upload-modal { max-width: 480px; }
+.upload-header { background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important; }
+.upload-tip { font-size: 0.85rem; color: #666; margin: 0 0 1rem; padding: 0.75rem; background: #f0fdf4; border-radius: 8px; border-left: 3px solid #10b981; }
+.upload-area {
+    border: 2px dashed #d1d5db; border-radius: 12px; padding: 2rem;
+    text-align: center; cursor: pointer; transition: all 0.2s;
+    background: #f9fafb;
+}
+.upload-area:hover, .upload-area.dragover { border-color: #10b981; background: #f0fdf4; }
+.upload-icon { font-size: 2.5rem; color: #9ca3af; margin-bottom: 0.75rem; }
+.upload-area:hover .upload-icon, .upload-area.dragover .upload-icon { color: #10b981; }
+.upload-text { font-size: 0.95rem; color: #374151; margin-bottom: 0.25rem; }
+.upload-hint { font-size: 0.8rem; color: #9ca3af; }
+.selected-file {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: #f0fdf4; border: 1px solid #10b981; border-radius: 8px;
+    padding: 0.75rem 1rem; margin-top: 0.5rem;
+}
+.selected-file i { font-size: 1.25rem; color: #10b981; }
+.selected-file span { flex: 1; font-size: 0.9rem; color: #374151; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.remove-file-btn { background: none; border: none; color: #9ca3af; cursor: pointer; padding: 0.25rem; }
+.remove-file-btn:hover { color: #ef4444; }
+.version-input { margin-top: 1rem; }
+.version-input label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+.version-input input {
+    width: 100%; padding: 0.6rem 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;
+    font-size: 0.9rem; transition: all 0.2s; box-sizing: border-box;
+}
+.version-input input:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
+.upload-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.25rem; }
+.cancel-btn { padding: 0.5rem 1rem; background: #e5e7eb; color: #666; border: none; border-radius: 8px; cursor: pointer; }
+.cancel-btn:hover { background: #d1d5db; }
+.upload-btn {
+    padding: 0.5rem 1.25rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff; border: none; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;
+}
+.upload-btn:hover:not(:disabled) { opacity: 0.9; }
+.upload-btn:disabled { background: #d1d5db; cursor: not-allowed; }
+
+/* 配置差异弹窗 */
+.config-modal { max-width: 550px; }
+.warning-header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important; }
+.config-tip { font-size: 0.9rem; color: #666; margin: 0 0 1rem; }
+.config-diff-list { max-height: 300px; overflow-y: auto; margin-bottom: 1rem; }
+.diff-item { background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 0.6rem 0.8rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.diff-item code { font-size: 0.8rem; color: #333; word-break: break-all; flex: 1; }
+.diff-type { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; color: #fff; white-space: nowrap; }
+.diff-type.var { background: #3b82f6; }
+.diff-type.dict { background: #8b5cf6; }
+.diff-type.key { background: #10b981; }
+.config-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.skip-btn { padding: 0.5rem 1rem; background: #e5e7eb; color: #666; border: none; border-radius: 8px; cursor: pointer; }
+.skip-btn:hover { background: #d1d5db; }
+.apply-btn { padding: 0.5rem 1rem; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; }
+.apply-btn:hover { opacity: 0.9; }
+
+/* 更新确认弹窗 */
+.update-confirm-modal { max-width: 420px; }
+.update-confirm-tip { font-size: 0.9rem; color: #374151; margin: 0 0 1rem; line-height: 1.5; }
+.update-options { margin-bottom: 1.25rem; }
+.option-item { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; padding: 0.75rem; background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; transition: all 0.2s; }
+.option-item:hover { background: #fde68a; }
+.option-item input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: #f59e0b; }
+.option-text { font-size: 0.9rem; color: #92400e; display: flex; align-items: center; gap: 0.4rem; }
+.option-text i { color: #f59e0b; }
+.update-confirm-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.confirm-btn { padding: 0.5rem 1.25rem; background: var(--theme-gradient); color: #fff; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+.confirm-btn:hover { opacity: 0.9; }
+
+/* 下载源弹窗 */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+}
+.modal-content {
+    background: #fff; border-radius: 16px; width: 90%; max-width: 500px;
+    max-height: 80vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: modalIn 0.3s ease;
+}
+@keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.25rem; border-bottom: 1px solid #eee;
+    background: var(--theme-gradient); color: #fff;
+}
+.modal-header h5 { margin: 0; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.close-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.close-btn:hover { background: rgba(255,255,255,0.3); }
+.modal-body { padding: 1.25rem; max-height: 60vh; overflow-y: auto; }
+.source-tip { font-size: 0.85rem; color: #666; margin: 0 0 1rem; padding: 0.75rem; background: #f8f9ff; border-radius: 8px; border-left: 3px solid var(--primary-color); }
+
+.source-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.source-item {
+    background: #f8f9ff; border: 2px solid #e8e8e8; border-radius: 12px;
+    padding: 1rem; transition: all 0.2s; position: relative;
+}
+.source-item:hover { border-color: var(--primary-color); }
+.source-item.active { border-color: var(--primary-color); background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%); }
+.source-info { margin-bottom: 0.75rem; }
+.source-name { font-weight: 600; color: #333; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 4px; }
+.source-desc { font-size: 0.8rem; color: #666; }
+.current-badge { font-size: 0.7rem; background: var(--theme-gradient); color: #fff; padding: 2px 8px; border-radius: 10px; }
+.source-actions { display: flex; gap: 0.5rem; }
+.test-btn, .select-btn {
+    padding: 0.4rem 0.75rem; border: none; border-radius: 6px;
+    font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; transition: all 0.2s;
+}
+.test-btn { background: #e0e7ff; color: var(--primary-color); }
+.test-btn:hover { background: #c7d2fe; }
+.select-btn { background: var(--theme-gradient); color: #fff; }
+.select-btn:hover { opacity: 0.9; }
+.source-status { font-size: 0.8rem; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.3rem; }
+.source-status.testing { color: #f59e0b; }
+.source-status.success { color: #10b981; }
+.source-status.error { color: #ef4444; }
+
+.config-alert {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem;
+}
+.alert-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.alert-info { display: flex; align-items: center; gap: 0.75rem; }
+.alert-info i { font-size: 1.5rem; color: #d97706; }
+.alert-info strong { display: block; color: #92400e; }
+.alert-info small { display: block; color: #b45309; font-size: 0.8rem; margin-top: 2px; }
+.alert-info span { color: #92400e; font-size: 0.85rem; }
+.fill-btn { padding: 0.5rem 1rem; background: #f59e0b; color: #fff; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; transition: all 0.2s; }
+.fill-btn:hover { background: #d97706; }
+
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.info-card { background: #fff; border-radius: 16px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.1); }
+.card-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+.version-card .card-icon { background: var(--theme-gradient); color: #fff; }
+.status-card .card-icon { background: #e0e7ff; color: var(--primary-color); }
+.source-card .card-icon { background: #d1fae5; color: #059669; }
+.status-card.checking .card-icon { background: #fef3c7; color: #f59e0b; }
+.status-card.has-update .card-icon { background: #dcfce7; color: #16a34a; }
+.status-card.up-to-date .card-icon { background: #d1fae5; color: #059669; }
+.status-card.error .card-icon { background: #fee2e2; color: #dc2626; }
+.card-content { flex: 1; }
+.card-label { font-size: 0.8rem; color: #999; margin-bottom: 4px; }
+.card-value { font-size: 1.1rem; font-weight: 600; color: #333; }
+.card-sub { font-size: 0.75rem; color: #999; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.progress-section { background: #fff; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.1); }
+.progress-header { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: #333; margin-bottom: 1rem; }
+.progress-header .spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.progress-bar-wrapper { height: 8px; background: #e0e7ff; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+.progress-bar { height: 100%; background: var(--theme-gradient); border-radius: 4px; transition: width 0.3s; }
+.progress-text { font-size: 0.85rem; color: #666; }
+.progress-section.completed .progress-bar { background: #10b981; }
+.progress-section.completed .progress-header { color: #059669; }
+.progress-section.failed .progress-bar { background: #ef4444; }
+.progress-section.failed .progress-header { color: #dc2626; }
+
+.changelog-section { background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.1); overflow: hidden; }
+.section-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid #f0f0f0; }
+.section-title { font-weight: 600; color: #333; display: flex; align-items: center; gap: 0.5rem; }
+.refresh-btn { padding: 0.4rem 0.75rem; background: #f5f7fa; border: none; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem; color: #666; transition: all 0.2s; }
+.refresh-btn:hover { background: #e0e7ff; color: var(--primary-color); }
+.changelog-content { padding: 1rem 1.25rem; max-height: 500px; overflow-y: auto; }
+
+.loading-state, .error-state { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 2rem; color: #999; }
+.error-state { color: #ef4444; }
+.spinner { width: 32px; height: 32px; border: 3px solid #eee; border-top-color: var(--primary-color); border-radius: 50%; animation: spin 0.8s linear infinite; }
+.spinner-sm { width: 16px; height: 16px; border: 2px solid #eee; border-top-color: var(--primary-color); border-radius: 50%; animation: spin 0.8s linear infinite; display: inline-block; }
+.retry-btn { padding: 0.4rem 0.75rem; background: var(--primary-color); color: #fff; border: none; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+.empty-state { text-align: center; padding: 2rem; color: #999; }
+.empty-state i { font-size: 2rem; opacity: 0.5; }
+
+.changelog-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.commit-item { background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 0.75rem 1rem; transition: all 0.2s; }
+.commit-item:hover { border-color: var(--primary-color); }
+.commit-item.latest { border-left: 3px solid var(--primary-color); background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%); }
+.commit-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.commit-sha { font-family: 'Consolas', monospace; font-size: 0.8rem; background: #e0e7ff; color: var(--primary-color); padding: 2px 8px; border-radius: 4px; }
+.latest-badge { font-size: 0.7rem; background: var(--theme-gradient); color: #fff; padding: 2px 8px; border-radius: 10px; }
+.commit-date { font-size: 0.75rem; color: #999; margin-left: auto; }
+.commit-message { font-size: 0.9rem; color: #333; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+.commit-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+.commit-author { font-size: 0.75rem; color: #999; }
+.commit-link { font-size: 0.75rem; color: var(--primary-color); text-decoration: none; }
+.commit-link:hover { text-decoration: underline; }
+
+.toast-msg { position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 0.75rem 1.25rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; animation: slideIn 0.3s ease; }
+.toast-msg.success { background: #d1fae5; color: #059669; }
+.toast-msg.error { background: #fee2e2; color: #dc2626; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; text-align: center; }
+    .header-title { flex-direction: column; }
+    .header-actions { justify-content: center; }
+    .info-grid { grid-template-columns: 1fr; }
+    .modal-content { width: 95%; margin: 1rem; }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,785 @@
+{% extends "pc/base.html" %}
+
+{% block content %}
+<div class="config-page">
+    <div id="pending-config-alert" class="pending-alert" style="display: none;">
+        <div class="pending-content">
+            <div class="pending-info">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <div><strong>有待应用的配置文件</strong><span id="pending-time"></span><small>重启框架后，新配置将自动应用</small></div>
+            </div>
+            <button class="cancel-btn" onclick="cancelPendingConfig()"><i class="bi bi-x-circle"></i> 取消待应用</button>
+        </div>
+    </div>
+
+    <div class="config-header">
+        <div class="header-content">
+            <div class="header-title">
+                <div class="header-icon"><i class="bi bi-gear-fill"></i></div>
+                <div>
+                    <h4>配置管理</h4>
+                    <p>管理机器人配置文件</p>
+                </div>
+                <span id="config-source-badge" class="source-badge" style="display: none;">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span id="config-source-badge-text"></span>
+                </span>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" onclick="loadConfigData()"><i class="bi bi-arrow-clockwise"></i> 重新加载</button>
+                <button class="action-btn primary" onclick="saveCurrentMode()"><i class="bi bi-save"></i> 保存配置</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mode-tabs">
+        <div class="tabs-wrapper">
+            <button class="mode-tab active" id="simple-mode-tab" onclick="switchMode('simple')"><i class="bi bi-ui-checks"></i> 简单模式</button>
+            <button class="mode-tab" id="advanced-mode-tab" onclick="switchMode('advanced')"><i class="bi bi-code-square"></i> 高级模式</button>
+            <button class="mode-tab" id="markdown-mode-tab" onclick="switchMode('markdown')"><i class="bi bi-markdown"></i> Markdown模板</button>
+            <button class="mode-tab" id="msgtpl-mode-tab" onclick="switchMode('msgtpl')"><i class="bi bi-chat-square-text"></i> 消息模板</button>
+        </div>
+        <div class="mode-hint" id="mode-hint"><i class="bi bi-info-circle"></i><span>点击配置组快速切换，修改后点击"保存配置"，重启框架后生效</span></div>
+    </div>
+
+    <div class="config-content" id="simple-mode">
+        <div class="loading-state" id="simple-loading"><div class="spinner"></div><span>正在加载配置项...</span></div>
+        <div class="error-state" id="simple-error" style="display: none;"><i class="bi bi-exclamation-triangle"></i><span id="simple-error-message">加载失败</span><button class="retry-btn" onclick="loadConfigData()">重试</button></div>
+        <div id="simple-form-container" style="display: none;">
+            <div class="groups-section">
+                <div class="groups-header"><i class="bi bi-grid-3x3-gap-fill"></i> 配置分组</div>
+                <div class="groups-list" id="config-groups-selector"></div>
+            </div>
+            <div id="config-form-wrapper">
+                <div class="form-section">
+                    <div class="form-header"><i class="bi bi-pencil-square"></i> <span id="current-group-name">请选择配置分组</span></div>
+                    <div class="form-content" id="config-form"><div class="empty-form">← 请从左侧选择一个配置分组</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="config-content" id="advanced-mode" style="display: none;">
+        <div class="loading-state" id="advanced-loading"><div class="spinner"></div><span>正在加载配置文件...</span></div>
+        <div class="error-state" id="advanced-error" style="display: none;"><i class="bi bi-exclamation-triangle"></i><span id="advanced-error-message">加载失败</span><button class="retry-btn" onclick="loadConfigData()">重试</button></div>
+        <div id="editor-container" style="display: none;"><div id="config-editor"></div></div>
+    </div>
+
+    <div class="config-content" id="markdown-mode" style="display: none;">
+        <div class="loading-state" id="markdown-loading"><div class="spinner"></div><span>正在加载Markdown模板...</span></div>
+        <div class="error-state" id="markdown-error" style="display: none;"><i class="bi bi-exclamation-triangle"></i><span id="markdown-error-message">加载失败</span><button class="retry-btn" onclick="loadMarkdownTemplates()">重试</button></div>
+        <div id="markdown-container" style="display: none;">
+            <div class="markdown-templates-wrapper">
+                <div class="templates-list-section">
+                    <div class="templates-header"><i class="bi bi-file-earmark-code"></i> 模板列表</div>
+                    <div class="templates-list" id="markdown-templates-list"></div>
+                </div>
+                <div class="template-detail-section">
+                    <div class="detail-header"><i class="bi bi-info-circle"></i> <span id="template-detail-title">选择模板查看详情</span></div>
+                    <div class="detail-content" id="template-detail-content">
+                        <div class="empty-detail">← 请从左侧选择一个模板查看详情</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="config-content" id="msgtpl-mode" style="display: none;">
+        <div class="loading-state" id="msgtpl-loading"><div class="spinner"></div><span>正在加载消息模板...</span></div>
+        <div class="error-state" id="msgtpl-error" style="display: none;"><i class="bi bi-exclamation-triangle"></i><span id="msgtpl-error-message">加载失败</span><button class="retry-btn" onclick="loadMessageTemplates()">重试</button></div>
+        <div id="msgtpl-container" style="display: none;">
+            <div class="msgtpl-editor-wrapper">
+                <div class="msgtpl-info">
+                    <div class="msgtpl-info-header"><i class="bi bi-info-circle"></i> 消息模板说明</div>
+                    <div class="msgtpl-info-content">
+                        <p>消息模板用于定义机器人的各种回复消息，包括欢迎消息、错误提示、黑名单提示等。</p>
+                        <p>修改后需要重启框架才能生效。请确保Python语法正确。</p>
+                    </div>
+                </div>
+                <div class="msgtpl-editor-section">
+                    <div class="msgtpl-editor-header">
+                        <span><i class="bi bi-code-slash"></i> 编辑消息模板</span>
+                        <button class="save-msgtpl-btn" onclick="saveMessageTemplates()"><i class="bi bi-save"></i> 保存模板</button>
+                    </div>
+                    <div id="msgtpl-editor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='css/vendor/codemirror.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('web.static', filename='css/vendor/codemirror-monokai.min.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-python.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-matchbrackets.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-closebrackets.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-active-line.min.js') }}"></script>
+
+<script>
+let currentConfig = '', configItems = [], configGroups = {}, currentGroupKey = '', codeMirrorEditor = null, groupDisplayNames = {}, currentMode = 'simple';
+const getToken = () => new URLSearchParams(window.location.search).get('token') || '';
+
+function switchMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(`${mode}-mode-tab`).classList.add('active');
+    document.getElementById('simple-mode').style.display = mode === 'simple' ? 'block' : 'none';
+    document.getElementById('advanced-mode').style.display = mode === 'advanced' ? 'block' : 'none';
+    document.getElementById('markdown-mode').style.display = mode === 'markdown' ? 'block' : 'none';
+    document.getElementById('msgtpl-mode').style.display = mode === 'msgtpl' ? 'block' : 'none';
+    const hint = document.getElementById('mode-hint');
+    if (mode === 'simple') {
+        hint.className = 'mode-hint';
+        hint.innerHTML = '<i class="bi bi-info-circle"></i><span>点击配置组快速切换，修改后点击"保存配置"，重启框架后生效</span>';
+    } else if (mode === 'advanced') {
+        hint.className = 'mode-hint warning';
+        hint.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i><span>直接编辑配置文件，请确保语法正确，否则框架可能无法启动！</span>';
+        if (codeMirrorEditor) setTimeout(() => codeMirrorEditor.refresh(), 50);
+    } else if (mode === 'markdown') {
+        hint.className = 'mode-hint info';
+        hint.innerHTML = '<i class="bi bi-markdown"></i><span>查看已配置的Markdown模板，模板用于发送富文本消息</span>';
+        loadMarkdownTemplates();
+    } else if (mode === 'msgtpl') {
+        hint.className = 'mode-hint warning';
+        hint.innerHTML = '<i class="bi bi-chat-square-text"></i><span>编辑消息模板文件，修改欢迎消息、错误提示等，请确保Python语法正确</span>';
+        loadMessageTemplates();
+    }
+}
+
+function updateConfigSourceBadge(source, isNew) {
+    const badge = document.getElementById('config-source-badge');
+    const text = document.getElementById('config-source-badge-text');
+    if (source) {
+        badge.className = `source-badge ${isNew ? 'pending' : 'current'}`;
+        text.textContent = `${source} (${isNew ? '待应用' : '当前生效'})`;
+        badge.style.display = 'inline-flex';
+    } else badge.style.display = 'none';
+}
+
+let msgtplEditor = null;
+
+function initCodeMirror() {
+    const el = document.getElementById('config-editor');
+    if (el && typeof CodeMirror !== 'undefined') {
+        codeMirrorEditor = CodeMirror(el, { mode: 'python', theme: 'monokai', lineNumbers: true, lineWrapping: true, indentUnit: 4, tabSize: 4, indentWithTabs: false, matchBrackets: true, autoCloseBrackets: true, styleActiveLine: true, viewportMargin: Infinity });
+        codeMirrorEditor.setSize('100%', '600px');
+    }
+    const msgtplEl = document.getElementById('msgtpl-editor');
+    if (msgtplEl && typeof CodeMirror !== 'undefined') {
+        msgtplEditor = CodeMirror(msgtplEl, { mode: 'python', theme: 'monokai', lineNumbers: true, lineWrapping: true, indentUnit: 4, tabSize: 4, indentWithTabs: false, matchBrackets: true, autoCloseBrackets: true, styleActiveLine: true, viewportMargin: Infinity });
+        msgtplEditor.setSize('100%', '550px');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() { initCodeMirror(); loadConfigData(); checkPendingConfig(); });
+
+async function loadConfigData() { await Promise.all([loadSimpleMode(), loadAdvancedMode()]); }
+
+async function loadSimpleMode() {
+    document.getElementById('simple-loading').style.display = 'flex';
+    document.getElementById('simple-error').style.display = 'none';
+    document.getElementById('simple-form-container').style.display = 'none';
+    try {
+        const r = await fetch(`/web/api/config/parse?token=${getToken()}`);
+        const result = await r.json();
+        if (!result.success) throw new Error(result.message);
+        configItems = result.items || [];
+        groupDisplayNames = result.group_names || {};
+        updateConfigSourceBadge(result.source, result.is_new);
+        buildConfigGroups();
+        document.getElementById('simple-loading').style.display = 'none';
+        document.getElementById('simple-form-container').style.display = 'flex';
+    } catch (e) {
+        document.getElementById('simple-loading').style.display = 'none';
+        document.getElementById('simple-error').style.display = 'flex';
+        document.getElementById('simple-error-message').textContent = e.message;
+    }
+}
+
+function buildConfigGroups() {
+    configGroups = { '_standalone': [] };
+    configItems.forEach(item => {
+        if (item.is_dict_item && item.dict_name) {
+            if (!configGroups[item.dict_name]) configGroups[item.dict_name] = [];
+            configGroups[item.dict_name].push(item);
+        } else configGroups['_standalone'].push(item);
+    });
+    renderGroupSelector();
+}
+
+function renderGroupSelector() {
+    const container = document.getElementById('config-groups-selector');
+    const names = { '_standalone': '独立配置', 'BOT': '机器人设置', 'WEB': 'Web面板', 'DATABASE': '数据库', 'REDIS_CONFIG': 'Redis缓存', 'OPENAPI': '开放平台', 'LOG': '日志设置', 'PLUGIN': '插件设置', 'MESSAGE': '消息设置', 'ADMIN': '管理员设置' };
+    const icons = { '_standalone': 'bi-sliders', 'BOT': 'bi-robot', 'WEB': 'bi-globe', 'DATABASE': 'bi-database', 'REDIS_CONFIG': 'bi-lightning-charge', 'OPENAPI': 'bi-cloud', 'LOG': 'bi-journal-text', 'PLUGIN': 'bi-puzzle', 'MESSAGE': 'bi-chat-dots', 'ADMIN': 'bi-shield-lock' };
+    let html = '';
+    Object.keys(configGroups).forEach(key => {
+        if (configGroups[key].length === 0) return;
+        const displayName = groupDisplayNames[key] || names[key] || key;
+        const icon = icons[key] || 'bi-gear';
+        html += `<div class="group-item ${currentGroupKey === key ? 'active' : ''}" onclick="showConfigGroup('${key}')"><i class="bi ${icon}"></i><span>${displayName}</span><span class="group-count">${configGroups[key].length}</span></div>`;
+    });
+    container.innerHTML = html || '<div class="empty-groups">暂无配置分组</div>';
+    if (!currentGroupKey && Object.keys(configGroups).length > 0) {
+        const firstKey = Object.keys(configGroups).find(k => configGroups[k].length > 0);
+        if (firstKey) showConfigGroup(firstKey);
+    }
+}
+
+function showConfigGroup(key) {
+    if (currentGroupKey && currentGroupKey !== key) saveCurrentFormData();
+    currentGroupKey = key;
+    document.querySelectorAll('.group-item').forEach(el => el.classList.remove('active'));
+    document.querySelector(`.group-item[onclick="showConfigGroup('${key}')"]`)?.classList.add('active');
+    const names = { '_standalone': '独立配置', 'BOT': '机器人设置', 'WEB': 'Web面板', 'DATABASE': '数据库', 'REDIS_CONFIG': 'Redis缓存', 'OPENAPI': '开放平台', 'LOG': '日志设置', 'PLUGIN': '插件设置', 'MESSAGE': '消息设置', 'ADMIN': '管理员设置' };
+    document.getElementById('current-group-name').textContent = groupDisplayNames[key] || names[key] || key;
+    renderConfigForm(configGroups[key] || []);
+}
+
+function renderConfigForm(items) {
+    const form = document.getElementById('config-form');
+    if (!items.length) { form.innerHTML = '<div class="empty-form">该分组暂无配置项</div>'; return; }
+    let html = '';
+    items.forEach((item, idx) => {
+        const displayName = item.is_dict_item ? item.key_name : item.name;
+        const comment = item.comment || '';
+        if (item.type === 'boolean') {
+            html += `<div class="form-item inline"><div class="form-item-header"><label>${displayName}</label>${comment ? `<span class="form-hint">${comment}</span>` : ''}</div><div class="form-item-input">${renderInput(item, idx)}</div></div>`;
+        } else {
+            html += `<div class="form-item"><div class="form-item-header"><label>${displayName}</label>${comment ? `<span class="form-hint">${comment}</span>` : ''}</div><div class="form-item-input">${renderInput(item, idx)}</div></div>`;
+        }
+    });
+    form.innerHTML = html;
+}
+
+function renderInput(item, idx) {
+    const id = `config-input-${idx}`;
+    if (item.type === 'boolean') return `<div class="toggle-switch"><input type="checkbox" id="${id}" data-idx="${idx}" ${item.value ? 'checked' : ''}><label for="${id}">${item.value ? '启用' : '禁用'}</label></div>`;
+    if (item.type === 'number') return `<input type="number" class="form-control" id="${id}" data-idx="${idx}" value="${item.value}">`;
+    if (item.type === 'list') return `<textarea class="form-control list-input" id="${id}" data-idx="${idx}" rows="3" placeholder="每行一个值">${Array.isArray(item.value) ? item.value.join('\n') : ''}</textarea>`;
+    // 主题渐变色特殊处理
+    if (item.key_name === 'theme_gradient' || item.name === 'theme_gradient') {
+        return renderThemeGradientPicker(item, idx, id);
+    }
+    return `<input type="text" class="form-control" id="${id}" data-idx="${idx}" value="${item.value || ''}">`;
+}
+
+function renderThemeGradientPicker(item, idx, id) {
+    const value = item.value || 'linear-gradient(135deg, #5865F2, #7289DA)';
+    const colors = parseGradientColors(value);
+    
+    // 所有预设颜色分类
+    const presets = {
+        '流行': [
+            { name: 'Discord', c1: '#5865F2', c2: '#7289DA' },
+            { name: 'Spotify', c1: '#1DB954', c2: '#191414' },
+            { name: '赛博朋克', c1: '#00F5FF', c2: '#FF00FF' },
+            { name: 'Instagram', c1: '#833AB4', c2: '#FD1D1D' },
+            { name: 'TikTok', c1: '#69C9D0', c2: '#EE1D52' },
+            { name: 'Twitter', c1: '#1DA1F2', c2: '#0D8BD9' },
+        ],
+        '暖色': [
+            { name: '橙粉渐变', c1: '#FF6B6B', c2: '#FFA07A' },
+            { name: '珊瑚橙', c1: '#FF7E5F', c2: '#FEB47B' },
+            { name: '玫瑰金', c1: '#F093FB', c2: '#F5576C' },
+            { name: '蜜桃色', c1: '#FFB88C', c2: '#DE6262' },
+            { name: '暖焰', c1: '#FF9A9E', c2: '#FAD0C4' },
+            { name: '多汁蜜桃', c1: '#FFECD2', c2: '#FCB69F' },
+        ],
+        '冷色': [
+            { name: '青绿渐变', c1: '#11998E', c2: '#38EF7D' },
+            { name: '深海蓝', c1: '#2193B0', c2: '#6DD5ED' },
+            { name: '极光', c1: '#00B4DB', c2: '#0083B0' },
+            { name: '海蓝宝石', c1: '#1A2980', c2: '#26D0CE' },
+            { name: '冰冻', c1: '#403B4A', c2: '#E7E9BB' },
+            { name: '电光紫', c1: '#4776E6', c2: '#8E54E9' },
+        ],
+        '自然': [
+            { name: '日落', c1: '#FA709A', c2: '#FEE140' },
+            { name: '薄荷绿', c1: '#0BAB64', c2: '#3BB78F' },
+            { name: '薰衣草紫', c1: '#667EEA', c2: '#764BA2' },
+            { name: '森林', c1: '#134E5E', c2: '#71B280' },
+            { name: '秋日', c1: '#DAD299', c2: '#B0DAB9' },
+            { name: '樱花', c1: '#FBD3E9', c2: '#BB377D' },
+            { name: '海上日落', c1: '#FC466B', c2: '#3F5EFB' },
+            { name: '北极光', c1: '#43CEA2', c2: '#185A9D' },
+        ],
+        '糖果': [
+            { name: '糖果粉', c1: '#FF61D2', c2: '#FE9090' },
+            { name: '柠檬青柠', c1: '#96E6A1', c2: '#DDD6F3' },
+            { name: '蓝莓', c1: '#6A11CB', c2: '#2575FC' },
+            { name: '芒果', c1: '#FFE259', c2: '#FFA751' },
+            { name: '葡萄', c1: '#8E2DE2', c2: '#4A00E0' },
+            { name: '西瓜', c1: '#FF416C', c2: '#FF4B2B' },
+        ],
+        '暗色': [
+            { name: '暗夜紫', c1: '#232526', c2: '#414345' },
+            { name: '石墨灰', c1: '#3A3D40', c2: '#181719' },
+            { name: '深空灰', c1: '#1A1A2E', c2: '#16213E' },
+            { name: '暗海', c1: '#373B44', c2: '#4286F4' },
+            { name: '钢铁灰', c1: '#485563', c2: '#29323C' },
+        ],
+        '金属': [
+            { name: '黄金', c1: '#F7971E', c2: '#FFD200' },
+            { name: '银色', c1: '#C9D6FF', c2: '#E2E2E2' },
+            { name: '青铜', c1: '#CD7F32', c2: '#8B4513' },
+            { name: '玫瑰金属', c1: '#B76E79', c2: '#E8B4B8' },
+        ],
+        '霓虹': [
+            { name: '霓虹绿', c1: '#00F260', c2: '#0575E6' },
+            { name: '霓虹粉', c1: '#F953C6', c2: '#B91D73' },
+            { name: '霓虹蓝', c1: '#00D2FF', c2: '#3A7BD5' },
+            { name: '霓虹紫', c1: '#DA22FF', c2: '#9733EE' },
+        ],
+    };
+    
+    let presetsHtml = '';
+    for (const [category, items] of Object.entries(presets)) {
+        presetsHtml += `<div class="preset-category"><span class="preset-category-label">${category}</span><div class="preset-category-items">`;
+        items.forEach(p => {
+            presetsHtml += `<button type="button" class="preset-btn" style="background: linear-gradient(135deg, ${p.c1}, ${p.c2});" onclick="applyPreset(${idx}, '${p.c1}', '${p.c2}')" title="${p.name}"></button>`;
+        });
+        presetsHtml += `</div></div>`;
+    }
+    
+    return `
+        <div class="theme-gradient-picker">
+            <div class="gradient-preview" id="gradient-preview-${idx}" style="background: ${value};"></div>
+            <div class="gradient-controls">
+                <div class="color-picker-group">
+                    <label>颜色1</label>
+                    <input type="color" id="color1-${idx}" value="${colors.color1}" onchange="updateGradient(${idx})">
+                    <span class="color-hex">${colors.color1}</span>
+                </div>
+                <div class="color-picker-group">
+                    <label>颜色2</label>
+                    <input type="color" id="color2-${idx}" value="${colors.color2}" onchange="updateGradient(${idx})">
+                    <span class="color-hex">${colors.color2}</span>
+                </div>
+            </div>
+            <div class="preset-colors-grid">${presetsHtml}</div>
+            <input type="hidden" class="form-control" id="${id}" data-idx="${idx}" value="${value}">
+        </div>
+    `;
+}
+
+function parseGradientColors(gradient) {
+    const match = gradient.match(/#[0-9A-Fa-f]{6}/g);
+    return {
+        color1: match && match[0] ? match[0] : '#5865F2',
+        color2: match && match[1] ? match[1] : '#7289DA'
+    };
+}
+
+function updateGradient(idx) {
+    const color1 = document.getElementById(`color1-${idx}`).value;
+    const color2 = document.getElementById(`color2-${idx}`).value;
+    const gradient = `linear-gradient(135deg, ${color1}, ${color2})`;
+    document.getElementById(`gradient-preview-${idx}`).style.background = gradient;
+    document.querySelector(`#color1-${idx}`).nextElementSibling.textContent = color1;
+    document.querySelector(`#color2-${idx}`).nextElementSibling.textContent = color2;
+    // 更新隐藏的 input
+    const inputs = document.querySelectorAll(`[data-idx="${idx}"]`);
+    inputs.forEach(input => { if (input.type === 'hidden') input.value = gradient; });
+}
+
+function applyPreset(idx, color1, color2) {
+    document.getElementById(`color1-${idx}`).value = color1;
+    document.getElementById(`color2-${idx}`).value = color2;
+    updateGradient(idx);
+}
+
+function saveCurrentFormData() {
+    if (!currentGroupKey || !configGroups[currentGroupKey]) return;
+    configGroups[currentGroupKey].forEach((item, idx) => {
+        const el = document.getElementById(`config-input-${idx}`);
+        if (!el) return;
+        if (item.type === 'boolean') item.value = el.checked;
+        else if (item.type === 'number') item.value = parseFloat(el.value) || 0;
+        else if (item.type === 'list') item.value = el.value.split('\n').map(s => s.trim()).filter(s => s);
+        else item.value = el.value;
+    });
+}
+
+async function loadAdvancedMode() {
+    document.getElementById('advanced-loading').style.display = 'flex';
+    document.getElementById('advanced-error').style.display = 'none';
+    document.getElementById('editor-container').style.display = 'none';
+    try {
+        const r = await fetch(`/web/api/config/get?token=${getToken()}`);
+        const result = await r.json();
+        if (!result.success) throw new Error(result.message);
+        currentConfig = result.content || '';
+        updateConfigSourceBadge(result.source, result.is_new);
+        if (codeMirrorEditor) codeMirrorEditor.setValue(currentConfig);
+        document.getElementById('advanced-loading').style.display = 'none';
+        document.getElementById('editor-container').style.display = 'block';
+        if (codeMirrorEditor) setTimeout(() => codeMirrorEditor.refresh(), 50);
+    } catch (e) {
+        document.getElementById('advanced-loading').style.display = 'none';
+        document.getElementById('advanced-error').style.display = 'flex';
+        document.getElementById('advanced-error-message').textContent = e.message;
+    }
+}
+
+async function saveCurrentMode() {
+    if (currentMode === 'simple') await saveSimpleMode();
+    else await saveAdvancedMode();
+}
+
+async function saveSimpleMode() {
+    saveCurrentFormData();
+    const allItems = [];
+    Object.values(configGroups).forEach(items => allItems.push(...items));
+    if (!allItems.length) { showToast('没有可保存的配置项', 'error'); return; }
+    try {
+        const r = await fetch(`/web/api/config/update_items?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: allItems }) });
+        const result = await r.json();
+        if (result.success) { showToast('配置已保存，重启框架后生效', 'success'); checkPendingConfig(); loadAdvancedMode(); }
+        else throw new Error(result.message);
+    } catch (e) { showToast('保存失败: ' + e.message, 'error'); }
+}
+
+async function saveAdvancedMode() {
+    if (!codeMirrorEditor) return;
+    const content = codeMirrorEditor.getValue();
+    try {
+        const r = await fetch(`/web/api/config/save?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content }) });
+        const result = await r.json();
+        if (result.success) { showToast('配置已保存，重启框架后生效', 'success'); checkPendingConfig(); loadSimpleMode(); }
+        else throw new Error(result.message);
+    } catch (e) { showToast('保存失败: ' + e.message, 'error'); }
+}
+
+async function checkPendingConfig() {
+    try {
+        const r = await fetch(`/web/api/config/check_pending?token=${getToken()}`);
+        const result = await r.json();
+        const alert = document.getElementById('pending-config-alert');
+        if (result.pending) {
+            document.getElementById('pending-time').textContent = result.modified_time ? ` (${result.modified_time})` : '';
+            alert.style.display = 'block';
+        } else alert.style.display = 'none';
+    } catch (e) { console.error('检查待应用配置失败:', e); }
+}
+
+async function cancelPendingConfig() {
+    if (!confirm('确定要取消待应用的配置吗？')) return;
+    try {
+        const r = await fetch(`/web/api/config/cancel_pending?token=${getToken()}`, { method: 'POST' });
+        const result = await r.json();
+        if (result.success) { showToast('已取消待应用配置', 'success'); document.getElementById('pending-config-alert').style.display = 'none'; loadConfigData(); }
+        else throw new Error(result.message);
+    } catch (e) { showToast('取消失败: ' + e.message, 'error'); }
+}
+
+function showToast(msg, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast-msg ${type}`;
+    toast.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'}-fill"></i> ${msg}`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+let markdownTemplates = [];
+let currentTemplateId = '';
+
+async function loadMarkdownTemplates() {
+    document.getElementById('markdown-loading').style.display = 'flex';
+    document.getElementById('markdown-error').style.display = 'none';
+    document.getElementById('markdown-container').style.display = 'none';
+    try {
+        const r = await fetch(`/web/api/config/markdown_templates?token=${getToken()}`);
+        const result = await r.json();
+        if (!result.success) throw new Error(result.message);
+        markdownTemplates = result.data.templates || [];
+        renderMarkdownTemplatesList();
+        document.getElementById('markdown-loading').style.display = 'none';
+        document.getElementById('markdown-container').style.display = 'block';
+    } catch (e) {
+        document.getElementById('markdown-loading').style.display = 'none';
+        document.getElementById('markdown-error').style.display = 'flex';
+        document.getElementById('markdown-error-message').textContent = e.message;
+    }
+}
+
+function renderMarkdownTemplatesList() {
+    const container = document.getElementById('markdown-templates-list');
+    if (!markdownTemplates.length) {
+        container.innerHTML = '<div class="empty-templates">暂无Markdown模板</div>';
+        return;
+    }
+    let html = '';
+    markdownTemplates.forEach(t => {
+        html += `<div class="template-item ${currentTemplateId === t.id ? 'active' : ''}" onclick="showTemplateDetail('${t.id}')">
+            <div class="template-item-header">
+                <span class="template-name">模板 ${t.id}</span>
+                <span class="template-param-count">${t.param_count} 参数</span>
+            </div>
+            <div class="template-item-params">${t.params.length ? t.params.join(', ') : '无参数'}</div>
+        </div>`;
+    });
+    container.innerHTML = html;
+}
+
+function showTemplateDetail(templateId) {
+    currentTemplateId = templateId;
+    document.querySelectorAll('.template-item').forEach(el => el.classList.remove('active'));
+    document.querySelector(`.template-item[onclick="showTemplateDetail('${templateId}')"]`)?.classList.add('active');
+    
+    const template = markdownTemplates.find(t => t.id === templateId);
+    if (!template) return;
+    
+    document.getElementById('template-detail-title').textContent = `模板 ${templateId} 详情`;
+    
+    let html = `
+        <div class="detail-item">
+            <div class="detail-label">模板ID</div>
+            <div class="detail-value"><code>${template.template_id || template.id}</code></div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">参数列表</div>
+            <div class="detail-value">
+                ${template.params.length ? template.params.map(p => `<span class="param-tag">{{'{{'}}.${p}{{'}}'}}</span>`).join(' ') : '<span class="no-params">无参数</span>'}
+            </div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">原始模板内容</div>
+            <div class="detail-value template-content"><code>${escapeHtml(template.raw_content || '未提供')}</code></div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">使用示例</div>
+            <div class="detail-value">
+                <pre class="usage-example">event.reply_markdown("${templateId}", (${template.params.map(p => `"${p}值"`).join(', ')}))</pre>
+            </div>
+        </div>
+    `;
+    document.getElementById('template-detail-content').innerHTML = html;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// 消息模板相关函数
+async function loadMessageTemplates() {
+    document.getElementById('msgtpl-loading').style.display = 'flex';
+    document.getElementById('msgtpl-error').style.display = 'none';
+    document.getElementById('msgtpl-container').style.display = 'none';
+    try {
+        const r = await fetch(`/web/api/config/message_templates?token=${getToken()}`);
+        const result = await r.json();
+        if (!result.success) throw new Error(result.message);
+        if (msgtplEditor) {
+            msgtplEditor.setValue(result.content || '');
+            setTimeout(() => msgtplEditor.refresh(), 50);
+        }
+        document.getElementById('msgtpl-loading').style.display = 'none';
+        document.getElementById('msgtpl-container').style.display = 'block';
+    } catch (e) {
+        document.getElementById('msgtpl-loading').style.display = 'none';
+        document.getElementById('msgtpl-error').style.display = 'flex';
+        document.getElementById('msgtpl-error-message').textContent = e.message;
+    }
+}
+
+async function saveMessageTemplates() {
+    if (!msgtplEditor) return;
+    const content = msgtplEditor.getValue();
+    try {
+        const r = await fetch(`/web/api/config/message_templates?token=${getToken()}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content })
+        });
+        const result = await r.json();
+        if (result.success) {
+            showToast('消息模板已保存，重启框架后生效', 'success');
+        } else throw new Error(result.message);
+    } catch (e) {
+        showToast('保存失败: ' + e.message, 'error');
+    }
+}
+</script>
+
+<style>
+.config-page { padding: 1rem; }
+
+.pending-alert {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem;
+}
+.pending-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.pending-info { display: flex; align-items: center; gap: 0.75rem; }
+.pending-info i { font-size: 1.5rem; color: #d97706; }
+.pending-info strong { display: block; color: #92400e; }
+.pending-info small { display: block; color: #b45309; font-size: 0.8rem; margin-top: 2px; }
+.pending-info span { color: #92400e; font-size: 0.85rem; }
+.cancel-btn { padding: 0.5rem 1rem; background: #fff; color: #d97706; border: 1px solid #f59e0b; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; transition: all 0.2s; }
+.cancel-btn:hover { background: #fef3c7; }
+
+.config-header {
+    background: var(--theme-gradient);
+    border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.header-title { display: flex; align-items: center; gap: 1rem; color: #fff; }
+.header-icon { width: 56px; height: 56px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.header-title h4 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+.header-title p { margin: 4px 0 0; font-size: 0.85rem; opacity: 0.85; }
+.source-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.75rem; margin-left: 0.75rem; }
+.source-badge.current { background: rgba(16, 185, 129, 0.2); color: #d1fae5; }
+.source-badge.pending { background: rgba(245, 158, 11, 0.3); color: #fef3c7; }
+.header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.action-btn { padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border: none; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+.action-btn:hover { background: rgba(255,255,255,0.3); }
+.action-btn.primary { background: #fff; color: var(--primary-color, #5865F2); }
+.action-btn.primary:hover { background: #f0f0f0; }
+
+.mode-tabs { background: #fff; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.08); }
+.tabs-wrapper { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.mode-tab { flex: 1; padding: 0.75rem 1rem; background: #f5f7fa; border: none; border-radius: 8px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #666; transition: all 0.2s; }
+.mode-tab:hover { background: #eef1f6; }
+.mode-tab.active { background: var(--theme-gradient); color: #fff; }
+.mode-hint { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: #f0f7ff; border-radius: 6px; font-size: 0.8rem; color: #3b82f6; }
+.mode-hint.warning { background: #fef3c7; color: #d97706; }
+.mode-hint.info { background: #e0f2fe; color: #0284c7; }
+
+.config-content { background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1); overflow: hidden; }
+.loading-state, .error-state { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3rem; color: #999; }
+.error-state { color: #ef4444; }
+.error-state i { font-size: 2.5rem; }
+.retry-btn { padding: 0.5rem 1rem; background: var(--primary-color, #5865F2); color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 0.5rem; }
+.spinner { width: 36px; height: 36px; border: 3px solid #eee; border-top-color: var(--primary-color, #5865F2); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#simple-form-container { display: flex; }
+.groups-section { width: 240px; border-right: 1px solid #f0f0f0; padding: 1rem; flex-shrink: 0; }
+.groups-header { font-weight: 600; color: #333; padding: 0.5rem 0.75rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.groups-list { display: flex; flex-direction: column; gap: 4px; }
+.group-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.75rem; border-radius: 8px; cursor: pointer; transition: all 0.2s; color: #666; }
+.group-item:hover { background: #f5f7fa; color: #333; }
+.group-item.active { background: var(--theme-gradient); color: #fff; }
+.group-item i { font-size: 1rem; }
+.group-count { margin-left: auto; background: rgba(88, 101, 242, 0.1); color: var(--primary-color, #5865F2); padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
+.group-item.active .group-count { background: rgba(255,255,255,0.2); color: #fff; }
+.empty-groups { text-align: center; padding: 2rem; color: #999; }
+
+#config-form-wrapper { flex: 1; min-width: 0; }
+.form-section { padding: 1rem 1.25rem; }
+.form-header { font-weight: 600; color: #333; padding-bottom: 0.75rem; margin-bottom: 1rem; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem; }
+.form-content { display: flex; flex-direction: column; gap: 1rem; }
+.empty-form { text-align: center; padding: 2rem; color: #999; }
+
+.form-item { background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 0.75rem 1rem; transition: all 0.2s; }
+.form-item:hover { border-color: var(--primary-color, #5865F2); }
+.form-item.inline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.form-item.inline .form-item-header { margin-bottom: 0; flex: 1; }
+.form-item.inline .form-item-input { width: auto; flex-shrink: 0; }
+.form-item-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.form-item-header label { font-weight: 600; color: #333; font-size: 0.9rem; }
+.form-hint { font-size: 0.75rem; color: #999; }
+.form-item-input { width: 100%; }
+.form-control { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
+.form-control:focus { border-color: var(--primary-color, #5865F2); outline: none; box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1); }
+.list-input { font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; resize: vertical; min-height: 80px; }
+
+/* 主题渐变色选择器 */
+.theme-gradient-picker { display: flex; flex-direction: column; gap: 12px; }
+.gradient-preview { height: 50px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.gradient-controls { display: flex; gap: 20px; flex-wrap: wrap; }
+.color-picker-group { display: flex; align-items: center; gap: 8px; }
+.color-picker-group label { font-size: 0.85rem; color: #666; min-width: 45px; }
+.color-picker-group input[type="color"] { width: 40px; height: 32px; border: none; border-radius: 6px; cursor: pointer; padding: 0; }
+.color-picker-group .color-hex { font-family: monospace; font-size: 0.8rem; color: #999; min-width: 70px; }
+.preset-colors-grid { display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; padding: 8px; background: #f8f9ff; border-radius: 10px; }
+.preset-category { display: flex; flex-direction: column; gap: 6px; }
+.preset-category-label { font-size: 0.75rem; color: #888; font-weight: 500; }
+.preset-category-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.preset-btn { width: 32px; height: 32px; border: 2px solid #fff; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: all 0.2s; }
+.preset-btn:hover { transform: scale(1.15); box-shadow: 0 4px 8px rgba(0,0,0,0.25); z-index: 1; }
+
+.toggle-switch { display: flex; align-items: center; gap: 8px; }
+.toggle-switch input { width: 44px; height: 22px; appearance: none; background: #ddd; border-radius: 11px; cursor: pointer; transition: background 0.2s; position: relative; }
+.toggle-switch input:checked { background: var(--primary-color, #5865F2); }
+.toggle-switch input::before { content: ''; position: absolute; width: 18px; height: 18px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.toggle-switch input:checked::before { transform: translateX(22px); }
+.toggle-switch label { font-size: 0.85rem; color: #666; cursor: pointer; }
+
+#editor-container { padding: 0; }
+#config-editor .CodeMirror { height: 600px; border: none; font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; background: #272822; }
+
+.toast-msg { position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 0.75rem 1.25rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; animation: slideIn 0.3s ease; }
+.toast-msg.success { background: #d1fae5; color: #059669; }
+.toast-msg.error { background: #fee2e2; color: #dc2626; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* Markdown模板样式 */
+.markdown-templates-wrapper { display: flex; min-height: 500px; }
+.templates-list-section { width: 280px; border-right: 1px solid #f0f0f0; padding: 1rem; flex-shrink: 0; }
+.templates-header { font-weight: 600; color: #333; padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.75rem; }
+.templates-list { display: flex; flex-direction: column; gap: 8px; max-height: 450px; overflow-y: auto; }
+.template-item { background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.2s; }
+.template-item:hover { border-color: var(--primary-color, #5865F2); background: #f0f4ff; }
+.template-item.active { background: var(--theme-gradient); border-color: transparent; }
+.template-item.active .template-name, .template-item.active .template-item-params { color: #fff; }
+.template-item.active .template-param-count { background: rgba(255,255,255,0.2); color: #fff; }
+.template-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.template-name { font-weight: 600; color: #333; font-size: 0.9rem; }
+.template-param-count { background: rgba(88, 101, 242, 0.1); color: var(--primary-color, #5865F2); padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
+.template-item-params { font-size: 0.8rem; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.empty-templates { text-align: center; padding: 2rem; color: #999; }
+
+.template-detail-section { flex: 1; padding: 1rem 1.25rem; min-width: 0; }
+.detail-header { font-weight: 600; color: #333; padding-bottom: 0.75rem; margin-bottom: 1rem; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem; }
+.detail-content { display: flex; flex-direction: column; gap: 1rem; }
+.empty-detail { text-align: center; padding: 3rem; color: #999; }
+.detail-item { background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 0.75rem 1rem; }
+.detail-label { font-weight: 600; color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.detail-value { color: #333; font-size: 0.9rem; }
+.detail-value code { background: #e8e8e8; padding: 2px 8px; border-radius: 4px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; }
+.param-tag { display: inline-block; background: var(--theme-gradient); color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; margin: 2px 4px 2px 0; font-family: 'Consolas', 'Monaco', monospace; }
+.no-params { color: #999; font-style: italic; }
+.template-content { background: #1e1e1e; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+.template-content code { background: transparent; color: #d4d4d4; display: block; white-space: pre-wrap; word-break: break-all; }
+.usage-example { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 8px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; margin: 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; text-align: center; }
+    .header-title { flex-direction: column; }
+    .header-actions { justify-content: center; }
+    #simple-form-container { flex-direction: column; }
+    .groups-section { width: 100%; border-right: none; border-bottom: 1px solid #f0f0f0; }
+    .groups-list { flex-direction: row; flex-wrap: wrap; }
+    .group-item { flex: 0 0 auto; }
+    .markdown-templates-wrapper { flex-direction: column; }
+    .templates-list-section { width: 100%; border-right: none; border-bottom: 1px solid #f0f0f0; }
+    .templates-list { max-height: 200px; }
+    .msgtpl-editor-wrapper { flex-direction: column; }
+    .msgtpl-info { width: 100%; border-right: none; border-bottom: 1px solid #f0f0f0; }
+}
+
+/* 消息模板编辑器样式 */
+.msgtpl-editor-wrapper { display: flex; gap: 1rem; min-height: 550px; }
+.msgtpl-info { width: 280px; flex-shrink: 0; }
+.msgtpl-info-header { font-weight: 600; color: #333; padding: 0.75rem; background: #f8f9fa; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #e9ecef; }
+.msgtpl-info-content { padding: 1rem; background: #fff; border: 1px solid #e9ecef; border-top: none; border-radius: 0 0 8px 8px; }
+.msgtpl-info-content p { margin: 0 0 0.75rem; color: #666; font-size: 0.9rem; line-height: 1.6; }
+.msgtpl-info-content p:last-child { margin-bottom: 0; }
+.msgtpl-editor-section { flex: 1; display: flex; flex-direction: column; }
+.msgtpl-editor-header { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: #f8f9fa; border-radius: 8px 8px 0 0; border: 1px solid #e9ecef; border-bottom: none; }
+.msgtpl-editor-header span { font-weight: 600; color: #333; display: flex; align-items: center; gap: 0.5rem; }
+.save-msgtpl-btn { padding: 0.5rem 1rem; background: var(--theme-gradient); color: #fff; border: none; border-radius: 6px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+.save-msgtpl-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+#msgtpl-editor { border: 1px solid #e9ecef; border-radius: 0 0 8px 8px; overflow: hidden; }
+#msgtpl-editor .CodeMirror { height: 550px; font-size: 13px; }
+</style>
+{% endblock %}

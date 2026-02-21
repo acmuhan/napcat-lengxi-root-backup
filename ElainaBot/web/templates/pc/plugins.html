@@ -1,0 +1,552 @@
+{% extends "pc/base.html" %}
+
+{% block content %}
+<div class="plugins-page">
+    <!-- 页面头部 -->
+    <div class="plugins-header">
+        <div class="header-content">
+            <div class="header-title">
+                <div class="header-icon"><i class="bi bi-puzzle"></i></div>
+                <div>
+                    <h4>插件管理</h4>
+                    <p>管理和配置机器人插件</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" onclick="showUploadPluginModal()">
+                    <i class="bi bi-cloud-upload"></i> 上传插件
+                </button>
+                <button class="action-btn" onclick="showCreatePluginModal()">
+                    <i class="bi bi-file-earmark-plus"></i> 新建插件
+                </button>
+                <button class="action-btn" onclick="showCreateFolderModal()">
+                    <i class="bi bi-folder-plus"></i> 新建文件夹
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 插件列表 -->
+    <div class="plugins-container">
+        <div class="plugins-loading" id="plugins-loading">
+            <div class="spinner"></div>
+            <span>加载插件列表...</span>
+        </div>
+        <div id="plugins-container"></div>
+    </div>
+</div>
+
+<!-- 编辑插件模态框 -->
+<div class="modal fade" id="editPluginModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-pencil-square"></i> 编辑插件: <span id="edit-plugin-name"></span></h5>
+                <div class="modal-header-actions">
+                    <button type="button" class="modal-btn primary" onclick="savePluginCode()"><i class="bi bi-save"></i> 保存</button>
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> 取消</button>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <div id="edit-plugin-loading" class="editor-loading"><div class="spinner"></div><p>加载中...</p></div>
+                <div id="edit-plugin-editor" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 创建插件模态框 -->
+<div class="modal fade" id="createPluginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title"><i class="bi bi-file-earmark-plus"></i> 创建新插件</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="form-group"><label>选择目录</label><select class="form-select" id="create-plugin-dir"><option value="">加载中...</option></select></div>
+                <div class="form-group"><label>插件文件名</label><input type="text" class="form-control" id="create-plugin-name" placeholder="例如: 我的插件.py"><small>将自动添加 .py 后缀</small></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="modal-btn" data-bs-dismiss="modal">取消</button><button type="button" class="modal-btn primary" onclick="createNewPlugin()"><i class="bi bi-plus-circle"></i> 创建</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- 创建文件夹模态框 -->
+<div class="modal fade" id="createFolderModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title"><i class="bi bi-folder-plus"></i> 创建新文件夹</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="form-group"><label>父目录（可选）</label><select class="form-select" id="create-folder-parent"><option value="">加载中...</option></select></div>
+                <div class="form-group"><label>文件夹名称</label><input type="text" class="form-control" id="create-folder-name" placeholder="例如: my_plugins"><small>只能包含字母、数字、下划线和中文</small></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="modal-btn" data-bs-dismiss="modal">取消</button><button type="button" class="modal-btn primary" onclick="createNewFolder()"><i class="bi bi-plus-circle"></i> 创建</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- 上传插件模态框 -->
+<div class="modal fade" id="uploadPluginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title"><i class="bi bi-cloud-upload"></i> 上传插件</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="form-group"><label>上传到目录</label><select class="form-select" id="upload-plugin-dir"><option value="">加载中...</option></select></div>
+                <div id="modal-drop-zone" class="drop-zone">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                    <h6>拖拽文件到此处</h6>
+                    <p>或</p>
+                    <button type="button" class="modal-btn primary" onclick="document.getElementById('modal-file-input').click()"><i class="bi bi-folder2-open"></i> 选择文件</button>
+                    <input type="file" id="modal-file-input" accept=".py" style="display: none;" multiple>
+                    <small>支持 .py 文件，可同时上传多个</small>
+                </div>
+                <div id="upload-progress-area" style="display: none;"><div class="progress-title">上传进度</div><div id="upload-files-list"></div></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="modal-btn" data-bs-dismiss="modal">关闭</button></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='css/vendor/codemirror.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('web.static', filename='css/vendor/codemirror-monokai.min.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-python.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-matchbrackets.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-closebrackets.min.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/vendor/codemirror-active-line.min.js') }}"></script>
+
+<script>
+const getToken = () => new URLSearchParams(window.location.search).get('token');
+let pluginCodeMirror = null, currentEditingPath = null;
+
+function loadPlugins() {
+    document.getElementById('plugins-loading').style.display = 'flex';
+    document.getElementById('plugins-container').innerHTML = '';
+    if (window.socket) window.socket.emit('get_plugins_info');
+    else { document.getElementById('plugins-loading').style.display = 'none'; document.getElementById('plugins-container').innerHTML = '<div class="empty-state"><i class="bi bi-wifi-off"></i><p>无法连接到服务器</p></div>'; }
+}
+
+function updatePluginsInfo(plugins) {
+    document.getElementById('plugins-loading').style.display = 'none';
+    const pluginsByDirectory = {};
+    loadPluginFolders().then(folders => {
+        folders.forEach(f => { if (!pluginsByDirectory[f.name]) pluginsByDirectory[f.name] = []; });
+        if (plugins && plugins.length > 0) {
+            plugins.forEach(p => {
+                const dir = p.directory || (p.name.startsWith('example/') ? 'example' : p.name.startsWith('system/') ? 'system' : 'other');
+                if (!pluginsByDirectory[dir]) pluginsByDirectory[dir] = [];
+                pluginsByDirectory[dir].push(p);
+            });
+        }
+        renderPluginsList(pluginsByDirectory);
+    });
+}
+
+function renderPluginsList(pluginsByDirectory) {
+    const container = document.getElementById('plugins-container');
+    if (!pluginsByDirectory || Object.keys(pluginsByDirectory).length === 0) { container.innerHTML = '<div class="empty-state"><i class="bi bi-inbox"></i><p>未发现任何插件目录</p></div>'; return; }
+    const order = ['system', 'example', 'alone'];
+    const sorted = Object.keys(pluginsByDirectory).sort((a, b) => {
+        const iA = order.indexOf(a), iB = order.indexOf(b);
+        if (iA === -1 && iB === -1) return a.localeCompare(b);
+        if (iA === -1) return 1; if (iB === -1) return -1;
+        return iA - iB;
+    });
+    const names = { 'system': '系统插件', 'example': '示例插件', 'alone': '独立插件', 'other': '其他插件' };
+    let html = '';
+    sorted.forEach(dir => {
+        const plugins = pluginsByDirectory[dir] || [];
+        const displayName = names[dir] || dir.toUpperCase();
+        html += `<div class="folder-section">
+            <div class="folder-header" onclick="togglePluginFolder('${dir}')">
+                <div class="folder-info"><i class="bi bi-chevron-right folder-chevron" id="folder-chevron-${dir}"></i><i class="bi bi-folder-fill folder-icon"></i><span>${displayName}</span><span class="folder-count">${plugins.length}</span></div>
+            </div>
+            <div class="folder-content" id="directory-plugins-${dir}">`;
+        if (plugins.length === 0) html += '<div class="empty-folder"><i class="bi bi-inbox"></i> 该目录暂无插件</div>';
+        else plugins.forEach(p => { html += renderPluginCard(p); });
+        html += '</div></div>';
+    });
+    container.innerHTML = html;
+}
+
+function renderPluginCard(p) {
+    const statusClass = p.status === 'loaded' ? 'loaded' : p.status === 'disabled' ? 'disabled' : 'error';
+    const statusBadges = { loaded: '<span class="status-badge success"><i class="bi bi-check-circle-fill"></i> 已加载</span>', disabled: '<span class="status-badge warning"><i class="bi bi-dash-circle-fill"></i> 已禁用</span>', error: '<span class="status-badge danger"><i class="bi bi-exclamation-triangle-fill"></i> 错误</span>' };
+    const statusBadge = statusBadges[p.status] || statusBadges.error;
+    const handlerBadge = p.status === 'loaded' ? `<span class="info-badge"><i class="bi bi-code-slash"></i> ${p.handlers || 0}个处理器</span>` : '';
+    const webBadge = p.is_web_plugin && p.web_route?.menu_name ? `<span class="web-badge" title="${p.web_route.description || ''}"><i class="${p.web_route.menu_icon || 'bi-globe'}"></i> ${p.web_route.menu_name}</span>` : '';
+    let displayName = p.name;
+    if (displayName.includes('/')) { const parts = displayName.split('/'); displayName = parts.length >= 3 ? `${parts[1]} <span class="sub-name">(${parts[2]})</span>` : parts[parts.length - 1]; }
+    const priority = p.status === 'loaded' ? `<span class="priority-badge"><i class="bi bi-sort-numeric-down"></i> ${p.priority !== undefined ? p.priority : 10}</span>` : '';
+    const pathDisplay = `<span class="path-text" title="${p.path}">${p.path.split('/').slice(-3).join('/')}</span>`;
+    const timeDisplay = p.last_modified ? `<span class="time-text"><i class="bi bi-clock-history"></i> ${p.last_modified}</span>` : '';
+    const isEnabled = p.enabled !== false && p.status === 'loaded';
+    const switchId = `switch-${p.path.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    const toggleSwitch = (p.status === 'loaded' || p.status === 'disabled') ? `<div class="toggle-switch"><input type="checkbox" id="${switchId}" ${isEnabled ? 'checked' : ''} onchange="togglePluginSwitch('${p.path}', this)"><label for="${switchId}">${isEnabled ? '已启用' : '已禁用'}</label></div>` : '';
+    const editBtn = p.path && (p.path.endsWith('.py') || p.path.endsWith('.py.ban')) ? `<button class="edit-btn" onclick="editPlugin('${p.path}')" title="编辑"><i class="bi bi-pencil-square"></i></button>` : '';
+    let handlersHtml = '';
+    if (p.status === 'loaded' && p.handlers_list?.length > 0) {
+        const ownerOnly = p.handlers_owner_only || {}, groupOnly = p.handlers_group_only || {};
+        handlersHtml = `<div class="handlers-section"><div class="handlers-list">${p.handlers_list.map(h => {
+            const isOwner = ownerOnly[h], isGroup = groupOnly[h];
+            let cls = 'handler-tag', icon = '';
+            if (isOwner) { cls += ' owner'; icon = '<i class="bi bi-shield-lock-fill"></i> '; }
+            if (isGroup) { cls += ' group'; icon += '<i class="bi bi-people-fill"></i> '; }
+            return `<span class="${cls}" title="${isOwner && isGroup ? '主人专属且仅限群聊' : isOwner ? '主人专属' : isGroup ? '仅限群聊' : '所有人可用'}">${icon}${h}</span>`;
+        }).join('')}</div></div>`;
+    }
+    const errorHtml = p.status === 'error' && p.error ? `<div class="error-section">${p.error}${p.traceback ? '<br>' + p.traceback : ''}</div>` : '';
+    return `<div class="plugin-card ${statusClass}"><div class="plugin-main"><div class="plugin-info"><div class="plugin-name">${displayName}</div><div class="plugin-meta">${priority}${pathDisplay}${timeDisplay}</div></div><div class="plugin-actions">${statusBadge}${handlerBadge}${webBadge}${toggleSwitch}${editBtn}</div></div>${handlersHtml}${errorHtml}</div>`;
+}
+
+function togglePluginFolder(dir) {
+    const content = document.getElementById(`directory-plugins-${dir}`);
+    const chevron = document.getElementById(`folder-chevron-${dir}`);
+    if (content && chevron) {
+        const expanded = content.classList.contains('expanded');
+        content.classList.toggle('expanded', !expanded);
+        chevron.classList.toggle('bi-chevron-down', !expanded);
+        chevron.classList.toggle('bi-chevron-right', expanded);
+    }
+}
+
+async function togglePluginSwitch(path, el) {
+    const action = el.checked ? 'enable' : 'disable';
+    const label = el.nextElementSibling;
+    const orig = { checked: !el.checked, text: label.textContent };
+    el.disabled = true; label.textContent = '处理中...';
+    try {
+        const r = await fetch(`/web/api/plugin/toggle?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path, action }) });
+        const result = await r.json();
+        if (result.success) {
+            showToast(result.message, 'success');
+            label.textContent = action === 'enable' ? '已启用' : '已禁用';
+            updatePluginCardStatus(el, action === 'enable' ? 'loaded' : 'disabled');
+            if (result.new_path) el.setAttribute('onchange', `togglePluginSwitch('${result.new_path}', this)`);
+            el.disabled = false;
+        } else throw new Error(result.message || '操作失败');
+    } catch (e) { showToast(e.message, 'error'); el.checked = orig.checked; label.textContent = orig.text; el.disabled = false; }
+}
+
+function updatePluginCardStatus(el, status) {
+    const card = el.closest('.plugin-card');
+    if (!card) return;
+    card.classList.remove('loaded', 'disabled', 'error');
+    card.classList.add(status);
+    const badge = card.querySelector('.status-badge');
+    if (badge) {
+        const cfg = { loaded: { cls: 'success', icon: 'check-circle-fill', text: '已加载' }, disabled: { cls: 'warning', icon: 'dash-circle-fill', text: '已禁用' }, error: { cls: 'danger', icon: 'exclamation-triangle-fill', text: '错误' } };
+        const c = cfg[status];
+        if (c) { badge.className = `status-badge ${c.cls}`; badge.innerHTML = `<i class="bi bi-${c.icon}"></i> ${c.text}`; }
+    }
+}
+
+function showToast(msg, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast-msg ${type}`;
+    toast.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'}-fill"></i> ${msg}`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+async function editPlugin(path) {
+    currentEditingPath = path;
+    const modal = new bootstrap.Modal(document.getElementById('editPluginModal'));
+    document.getElementById('edit-plugin-name').textContent = path.split('/').pop();
+    document.getElementById('edit-plugin-loading').style.display = 'flex';
+    document.getElementById('edit-plugin-editor').style.display = 'none';
+    document.getElementById('edit-plugin-editor').innerHTML = '';
+    if (pluginCodeMirror) pluginCodeMirror = null;
+    modal.show();
+    const r = await fetch(`/web/api/plugin/read?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path }) });
+    const result = await r.json();
+    if (result.success) {
+        setTimeout(() => {
+            document.getElementById('edit-plugin-loading').style.display = 'none';
+            document.getElementById('edit-plugin-editor').style.display = 'block';
+            if (typeof CodeMirror !== 'undefined') {
+                pluginCodeMirror = CodeMirror(document.getElementById('edit-plugin-editor'), { value: result.content || '# 文件为空\n\n', mode: 'python', theme: 'monokai', lineNumbers: true, matchBrackets: true, autoCloseBrackets: true, styleActiveLine: true, indentUnit: 4, indentWithTabs: false, lineWrapping: true });
+                pluginCodeMirror.setSize('100%', '650px');
+                setTimeout(() => pluginCodeMirror?.refresh(), 50);
+            }
+        }, 300);
+    } else { showToast('读取失败: ' + result.message, 'error'); modal.hide(); }
+}
+
+async function savePluginCode() {
+    if (!currentEditingPath || !confirm('确定要保存修改吗？原文件将被备份为 .backup')) return;
+    const content = pluginCodeMirror ? pluginCodeMirror.getValue() : '';
+    const r = await fetch(`/web/api/plugin/save?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: currentEditingPath, content }) });
+    const result = await r.json();
+    if (result.success) { showToast('保存成功！请重启框架使更改生效', 'success'); bootstrap.Modal.getInstance(document.getElementById('editPluginModal')).hide(); if (window.socket) setTimeout(() => window.socket.emit('get_plugins_info'), 500); }
+    else showToast('保存失败: ' + result.message, 'error');
+}
+
+async function loadPluginFolders() {
+    try { const r = await fetch(`/web/api/plugin/folders?token=${getToken()}`); const result = await r.json(); return result.success ? result.folders : []; }
+    catch (e) { console.error('获取文件夹列表失败:', e); return []; }
+}
+
+function populateFolderSelect(el, folders) { el.innerHTML = ''; folders.forEach(f => { const opt = document.createElement('option'); opt.value = f.path; opt.textContent = f.display_name; el.appendChild(opt); }); }
+
+async function showCreatePluginModal() {
+    const modal = new bootstrap.Modal(document.getElementById('createPluginModal'));
+    document.getElementById('create-plugin-name').value = '';
+    const folders = await loadPluginFolders();
+    populateFolderSelect(document.getElementById('create-plugin-dir'), folders);
+    modal.show();
+}
+
+async function createNewPlugin() {
+    const dir = document.getElementById('create-plugin-dir').value;
+    const name = document.getElementById('create-plugin-name').value.trim();
+    if (!name) { showToast('请输入插件文件名', 'error'); return; }
+    try {
+        const r = await fetch(`/web/api/plugin/create?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ directory: dir, filename: name }) });
+        const result = await r.json();
+        if (result.success) { showToast('插件创建成功！', 'success'); bootstrap.Modal.getInstance(document.getElementById('createPluginModal')).hide(); if (window.socket) setTimeout(() => window.socket.emit('get_plugins_info'), 500); setTimeout(() => editPlugin(result.path), 800); }
+        else throw new Error(result.message || '创建失败');
+    } catch (e) { showToast('创建插件失败: ' + e.message, 'error'); }
+}
+
+async function showCreateFolderModal() {
+    const modal = new bootstrap.Modal(document.getElementById('createFolderModal'));
+    document.getElementById('create-folder-name').value = '';
+    const folders = await loadPluginFolders();
+    const el = document.getElementById('create-folder-parent');
+    el.innerHTML = '<option value="">plugins/ (根目录)</option>';
+    folders.forEach(f => { const opt = document.createElement('option'); opt.value = f.path; opt.textContent = f.display_name + '/'; el.appendChild(opt); });
+    modal.show();
+}
+
+async function createNewFolder() {
+    const parent = document.getElementById('create-folder-parent').value;
+    const name = document.getElementById('create-folder-name').value.trim();
+    if (!name) { showToast('请输入文件夹名称', 'error'); return; }
+    try {
+        const r = await fetch(`/web/api/plugin/create_folder?token=${getToken()}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ parent_dir: parent, folder_name: name }) });
+        const result = await r.json();
+        if (result.success) { showToast('文件夹创建成功！', 'success'); bootstrap.Modal.getInstance(document.getElementById('createFolderModal')).hide(); if (window.socket) setTimeout(() => window.socket.emit('get_plugins_info'), 500); }
+        else throw new Error(result.message || '创建失败');
+    } catch (e) { showToast('创建文件夹失败: ' + e.message, 'error'); }
+}
+
+async function showUploadPluginModal() {
+    const modal = new bootstrap.Modal(document.getElementById('uploadPluginModal'));
+    document.getElementById('modal-drop-zone').style.display = 'flex';
+    document.getElementById('upload-progress-area').style.display = 'none';
+    document.getElementById('upload-files-list').innerHTML = '';
+    const folders = await loadPluginFolders();
+    populateFolderSelect(document.getElementById('upload-plugin-dir'), folders);
+    modal.show();
+}
+
+async function uploadFile(file, dir) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('directory', dir);
+    try { const r = await fetch(`/web/api/plugin/upload?token=${getToken()}`, { method: 'POST', body: formData }); return await r.json(); }
+    catch (e) { return { success: false, message: e.message }; }
+}
+
+async function handleFileUpload(files) {
+    const dir = document.getElementById('upload-plugin-dir').value;
+    const pyFiles = Array.from(files).filter(f => f.name.endsWith('.py'));
+    if (pyFiles.length === 0) { showToast('请选择 .py 文件', 'error'); return; }
+    document.getElementById('modal-drop-zone').style.display = 'none';
+    document.getElementById('upload-progress-area').style.display = 'block';
+    const list = document.getElementById('upload-files-list');
+    list.innerHTML = '';
+    let success = 0, fail = 0;
+    for (const file of pyFiles) {
+        const item = document.createElement('div');
+        item.className = 'upload-item';
+        item.innerHTML = `<div class="upload-item-info"><i class="bi bi-file-earmark-code"></i><span>${file.name}</span></div><span class="upload-status"><div class="spinner-sm"></div></span>`;
+        list.appendChild(item);
+        const result = await uploadFile(file, dir);
+        const status = item.querySelector('.upload-status');
+        if (result.success) { status.innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>'; success++; }
+        else { status.innerHTML = `<i class="bi bi-x-circle-fill text-danger" title="${result.message}"></i>`; fail++; }
+    }
+    list.innerHTML += `<div class="upload-summary">上传完成！成功: ${success}，失败: ${fail}</div>`;
+    if (success > 0) { showToast(`成功上传 ${success} 个插件！`, 'success'); if (window.socket) setTimeout(() => window.socket.emit('get_plugins_info'), 500); }
+}
+
+function initDragDropUpload() {
+    const zone = document.getElementById('modal-drop-zone');
+    const input = document.getElementById('modal-file-input');
+    if (!zone || !input) return;
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => zone.addEventListener(e, ev => { ev.preventDefault(); ev.stopPropagation(); }, false));
+    ['dragenter', 'dragover'].forEach(e => zone.addEventListener(e, () => zone.classList.add('active'), false));
+    ['dragleave', 'drop'].forEach(e => zone.addEventListener(e, () => zone.classList.remove('active'), false));
+    zone.addEventListener('drop', e => handleFileUpload(e.dataTransfer.files), false);
+    input.addEventListener('change', e => { if (e.target.files.length > 0) handleFileUpload(e.target.files); });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    window.updatePluginsInfo = updatePluginsInfo;
+    window.togglePluginSwitch = togglePluginSwitch;
+    window.editPlugin = editPlugin;
+    window.savePluginCode = savePluginCode;
+    window.showCreatePluginModal = showCreatePluginModal;
+    window.createNewPlugin = createNewPlugin;
+    window.showCreateFolderModal = showCreateFolderModal;
+    window.createNewFolder = createNewFolder;
+    window.showUploadPluginModal = showUploadPluginModal;
+    window.handleFileUpload = handleFileUpload;
+    initSocket('plugins');
+    initDragDropUpload();
+});
+</script>
+
+<style>
+.plugins-page { padding: 1rem; }
+
+/* 页面头部 */
+.plugins-header {
+    background: var(--theme-gradient);
+    border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.header-title { display: flex; align-items: center; gap: 1rem; color: #fff; }
+.header-icon { width: 56px; height: 56px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.header-title h4 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+.header-title p { margin: 4px 0 0; font-size: 0.85rem; opacity: 0.85; }
+.header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.action-btn {
+    padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border: none;
+    border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;
+}
+.action-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* 插件容器 */
+.plugins-container { background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); overflow: hidden; }
+.plugins-loading { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3rem; color: #999; }
+.spinner { width: 36px; height: 36px; border: 3px solid #eee; border-top-color: var(--primary-color, #5865F2); border-radius: 50%; animation: spin 0.8s linear infinite; }
+.spinner-sm { width: 16px; height: 16px; border: 2px solid #eee; border-top-color: var(--primary-color, #5865F2); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty-state { text-align: center; padding: 3rem; color: #999; }
+.empty-state i { font-size: 3rem; opacity: 0.5; }
+.empty-state p { margin-top: 0.75rem; }
+
+/* 文件夹区域 */
+.folder-section { border-bottom: 1px solid #f0f0f0; }
+.folder-section:last-child { border-bottom: none; }
+.folder-header {
+    display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;
+    cursor: pointer; transition: background 0.2s; background: #fafbfc;
+}
+.folder-header:hover { background: #f5f7fa; }
+.folder-info { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: #333; }
+.folder-chevron { transition: transform 0.2s; color: #999; }
+.folder-icon { color: var(--primary-color, #5865F2); }
+.folder-count { background: var(--primary-color, #5865F2); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 500; margin-left: 0.5rem; }
+.folder-content { display: none; padding: 0 1rem 1rem; }
+.folder-content.expanded { display: block; }
+.empty-folder { text-align: center; padding: 1.5rem; color: #999; font-size: 0.9rem; }
+
+/* 插件卡片 */
+.plugin-card {
+    background: #f8f9ff; border: 1px solid #e8e8e8; border-radius: 12px; margin-bottom: 0.75rem;
+    transition: all 0.2s; overflow: hidden;
+}
+.plugin-card:hover { border-color: var(--primary-color, #5865F2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+.plugin-card.loaded { border-left: 3px solid #10b981; }
+.plugin-card.disabled { border-left: 3px solid #f59e0b; opacity: 0.8; }
+.plugin-card.error { border-left: 3px solid #ef4444; }
+.plugin-main { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+.plugin-info { flex: 1; min-width: 200px; }
+.plugin-name { font-weight: 600; font-size: 0.95rem; color: #333; }
+.plugin-name .sub-name { font-weight: 400; color: #999; font-size: 0.85rem; }
+.plugin-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 4px; flex-wrap: wrap; }
+.priority-badge { font-size: 0.7rem; color: var(--primary-color, #5865F2); background: rgba(88, 101, 242, 0.1); padding: 2px 6px; border-radius: 4px; }
+.path-text { font-size: 0.75rem; color: #999; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.time-text { font-size: 0.75rem; color: #bbb; }
+.plugin-actions { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+
+/* 状态徽章 */
+.status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 500; }
+.status-badge.success { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.status-badge.warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.status-badge.danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.info-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; background: #f0f0f0; color: #666; }
+.web-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; background: var(--theme-gradient); color: #fff; }
+
+/* 开关 */
+.toggle-switch { display: flex; align-items: center; gap: 8px; }
+.toggle-switch input { width: 40px; height: 20px; appearance: none; background: #ddd; border-radius: 10px; cursor: pointer; transition: background 0.2s; position: relative; }
+.toggle-switch input:checked { background: var(--primary-color, #5865F2); }
+.toggle-switch input::before { content: ''; position: absolute; width: 16px; height: 16px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
+.toggle-switch input:checked::before { transform: translateX(20px); }
+.toggle-switch label { font-size: 0.8rem; color: #666; cursor: pointer; white-space: nowrap; }
+.edit-btn { padding: 6px 10px; background: transparent; border: 1px solid var(--primary-color, #5865F2); color: var(--primary-color, #5865F2); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+.edit-btn:hover { background: var(--primary-color, #5865F2); color: #fff; }
+
+/* 处理器区域 */
+.handlers-section { padding: 0.5rem 1rem 0.75rem; border-top: 1px solid #eee; background: #fafbfc; }
+.handlers-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.handler-tag { display: inline-block; padding: 3px 8px; background: #e8f4fd; color: #0284c7; border-radius: 4px; font-size: 0.7rem; }
+.handler-tag.owner { background: #fef3c7; color: #d97706; }
+.handler-tag.group { background: #dbeafe; color: #2563eb; }
+.error-section { padding: 0.5rem 1rem; background: #fef2f2; color: #dc2626; font-size: 0.75rem; border-top: 1px solid #fecaca; max-height: 100px; overflow-y: auto; }
+
+/* 模态框样式 */
+.modal-content { border: none; border-radius: 16px; overflow: hidden; }
+.modal-header { background: var(--theme-gradient); color: #fff; padding: 1rem 1.25rem; border: none; }
+.modal-header .modal-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+.modal-header .btn-close { filter: brightness(0) invert(1); }
+.modal-header-actions { display: flex; gap: 0.5rem; }
+.modal-btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.2); color: #fff; transition: all 0.2s; }
+.modal-btn:hover { background: rgba(255,255,255,0.3); }
+.modal-btn.primary { background: #fff; color: var(--primary-color, #5865F2); }
+.modal-btn.primary:hover { background: #f0f0f0; }
+.modal-body { padding: 1.25rem; }
+.modal-footer { border-top: 1px solid #eee; padding: 1rem 1.25rem; }
+.modal-footer .modal-btn { background: #f0f0f0; color: #666; }
+.modal-footer .modal-btn.primary { background: var(--theme-gradient); color: #fff; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-weight: 500; color: #333; margin-bottom: 0.5rem; font-size: 0.9rem; }
+.form-group small { display: block; margin-top: 0.35rem; color: #999; font-size: 0.8rem; }
+.form-control, .form-select { border: 1px solid #e0e0e0; border-radius: 8px; padding: 0.6rem 0.75rem; font-size: 0.9rem; }
+.form-control:focus, .form-select:focus { border-color: var(--primary-color, #5865F2); outline: none; box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1); }
+
+/* 编辑器加载 */
+.editor-loading { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 3rem; color: #999; }
+#edit-plugin-editor .CodeMirror { height: 650px; border: none; font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; background: #272822; }
+
+/* 上传区域 */
+.drop-zone {
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 2.5rem;
+    border: 2px dashed #ddd; border-radius: 12px; background: #fafbfc; transition: all 0.2s; cursor: pointer;
+}
+.drop-zone:hover, .drop-zone.active { border-color: var(--primary-color, #5865F2); background: rgba(88, 101, 242, 0.05); }
+.drop-zone i { font-size: 3rem; color: var(--primary-color, #5865F2); }
+.drop-zone h6 { margin: 0; color: #333; }
+.drop-zone p { margin: 0; color: #999; font-size: 0.9rem; }
+.drop-zone small { color: #bbb; font-size: 0.8rem; }
+.progress-title { font-weight: 600; margin-bottom: 0.75rem; }
+.upload-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem; }
+.upload-item-info { display: flex; align-items: center; gap: 0.5rem; }
+.upload-summary { padding: 0.75rem; background: rgba(88, 101, 242, 0.1); border-radius: 8px; color: var(--primary-color, #5865F2); text-align: center; margin-top: 0.75rem; }
+
+/* Toast */
+.toast-msg { position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 0.75rem 1.25rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; animation: slideIn 0.3s ease; }
+.toast-msg.success { background: #d1fae5; color: #059669; }
+.toast-msg.error { background: #fee2e2; color: #dc2626; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; text-align: center; }
+    .header-title { flex-direction: column; }
+    .header-actions { justify-content: center; }
+    .plugin-main { flex-direction: column; align-items: flex-start; }
+    .plugin-actions { width: 100%; justify-content: flex-start; margin-top: 0.5rem; }
+    .path-text { max-width: 150px; }
+}
+</style>
+{% endblock %}
