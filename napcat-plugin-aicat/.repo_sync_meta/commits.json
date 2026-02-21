@@ -1,0 +1,2466 @@
+[
+  {
+    "sha": "bb5a830bf3bd518861e0619166efff37d70a69a1",
+    "node_id": "C_kwDORDv59toAKGJiNWE4MzBiZjNiZDUxODg2MWUwNjE5MTY2ZWZmZjM3ZDcwYTY5YTE",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:22:22Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:22:22Z"
+      },
+      "message": "更新 auto-sign.ts",
+      "tree": {
+        "sha": "74c63b879ab3e9fd4de72f705aaf2afe1a80b7c7",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/74c63b879ab3e9fd4de72f705aaf2afe1a80b7c7"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/bb5a830bf3bd518861e0619166efff37d70a69a1",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/bb5a830bf3bd518861e0619166efff37d70a69a1",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/bb5a830bf3bd518861e0619166efff37d70a69a1",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/bb5a830bf3bd518861e0619166efff37d70a69a1/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c025d08f6c39742b8444b4139ba279778aa71b91",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c025d08f6c39742b8444b4139ba279778aa71b91",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/c025d08f6c39742b8444b4139ba279778aa71b91"
+      }
+    ]
+  },
+  {
+    "sha": "c025d08f6c39742b8444b4139ba279778aa71b91",
+    "node_id": "C_kwDORDv59toAKGMwMjVkMDhmNmMzOTc0MmI4NDQ0YjQxMzliYTI3OTc3OGFhNzFiOTE",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:17:19Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:17:19Z"
+      },
+      "message": "优化",
+      "tree": {
+        "sha": "2a0bcf9ff493556c5e12d0b503d608ca4e740631",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/2a0bcf9ff493556c5e12d0b503d608ca4e740631"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/c025d08f6c39742b8444b4139ba279778aa71b91",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c025d08f6c39742b8444b4139ba279778aa71b91",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/c025d08f6c39742b8444b4139ba279778aa71b91",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c025d08f6c39742b8444b4139ba279778aa71b91/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c"
+      }
+    ]
+  },
+  {
+    "sha": "5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+    "node_id": "C_kwDORDv59toAKDViZjdhODI1ZTQyNDZjODRhY2Q0Y2E5YzkzY2UxMDNiZjlmODhmM2M",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:06:35Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T15:06:35Z"
+      },
+      "message": "增加个刷dau的小逻辑，嘿嘿",
+      "tree": {
+        "sha": "265615d05ebe8827a0c0b68bb6e96aba0a230d9c",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/265615d05ebe8827a0c0b68bb6e96aba0a230d9c"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5bf7a825e4246c84acd4ca9c93ce103bf9f88f3c/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b"
+      }
+    ]
+  },
+  {
+    "sha": "a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+    "node_id": "C_kwDORDv59toAKGE1ZTA1ZDA0YWVlYzM2ZDQxZWU3ZjI2ODA1MjkzY2E2YzhiNmM5NGI",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T14:14:27Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-19T14:14:27Z"
+      },
+      "message": "增加发送媒体文件的权限管理",
+      "tree": {
+        "sha": "4d5dc55c5377da2f026fbabee3d4fdf4494b54d5",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/4d5dc55c5377da2f026fbabee3d4fdf4494b54d5"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/a5e05d04aeec36d41ee7f26805293ca6c8b6c94b/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "066e7229aa231afb7356a7d0eae520d5e706bf47",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/066e7229aa231afb7356a7d0eae520d5e706bf47",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/066e7229aa231afb7356a7d0eae520d5e706bf47"
+      }
+    ]
+  },
+  {
+    "sha": "066e7229aa231afb7356a7d0eae520d5e706bf47",
+    "node_id": "C_kwDORDv59toAKDA2NmU3MjI5YWEyMzFhZmI3MzU2YTdkMGVhZTUyMGQ1ZTcwNmJmNDc",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-17T10:34:05Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-17T10:34:05Z"
+      },
+      "message": "优化上下文机制，增加轮数",
+      "tree": {
+        "sha": "f1c8157c62a0b15331d05ab4c2a99cdf53b5f796",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/f1c8157c62a0b15331d05ab4c2a99cdf53b5f796"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/066e7229aa231afb7356a7d0eae520d5e706bf47",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/066e7229aa231afb7356a7d0eae520d5e706bf47",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/066e7229aa231afb7356a7d0eae520d5e706bf47",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/066e7229aa231afb7356a7d0eae520d5e706bf47/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "bc5a6878b8312d42931daa067c8abd903b8a9a38",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/bc5a6878b8312d42931daa067c8abd903b8a9a38",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/bc5a6878b8312d42931daa067c8abd903b8a9a38"
+      }
+    ]
+  },
+  {
+    "sha": "bc5a6878b8312d42931daa067c8abd903b8a9a38",
+    "node_id": "C_kwDORDv59toAKGJjNWE2ODc4YjgzMTJkNDI5MzFkYWEwNjdjOGFiZDkwM2I4YTlhMzg",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-14T07:12:26Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-14T07:12:26Z"
+      },
+      "message": "v4.0.0更新，增加免费额度的使用上限",
+      "tree": {
+        "sha": "ce3a8078995a18825e006d623d5a68e9689585da",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/ce3a8078995a18825e006d623d5a68e9689585da"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/bc5a6878b8312d42931daa067c8abd903b8a9a38",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/bc5a6878b8312d42931daa067c8abd903b8a9a38",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/bc5a6878b8312d42931daa067c8abd903b8a9a38",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/bc5a6878b8312d42931daa067c8abd903b8a9a38/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/fb36f9558d80aeefa5a670e79cc00db6668ee5aa"
+      }
+    ]
+  },
+  {
+    "sha": "fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+    "node_id": "C_kwDORDv59toAKGZiMzZmOTU1OGQ4MGFlZWZhNWE2NzBlNzljYzAwZGI2NjY4ZWU1YWE",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-12T02:21:25Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-12T02:21:25Z"
+      },
+      "message": "增加可单独群禁用或启用插件",
+      "tree": {
+        "sha": "5f2cf59bb0c3498e633264d79ef1502484e578b0",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/5f2cf59bb0c3498e633264d79ef1502484e578b0"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/fb36f9558d80aeefa5a670e79cc00db6668ee5aa",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fb36f9558d80aeefa5a670e79cc00db6668ee5aa/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "13dc12fc12f2419cc7189751775c02c330729a09",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/13dc12fc12f2419cc7189751775c02c330729a09",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/13dc12fc12f2419cc7189751775c02c330729a09"
+      }
+    ]
+  },
+  {
+    "sha": "13dc12fc12f2419cc7189751775c02c330729a09",
+    "node_id": "C_kwDORDv59toAKDEzZGMxMmZjMTJmMjQxOWNjNzE4OTc1MTc3NWMwMmMzMzA3MjlhMDk",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T10:06:19Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T10:06:19Z"
+      },
+      "message": "更新 release.yml",
+      "tree": {
+        "sha": "a2988f0e39eacd0659d8856478d58ef5fc04b9ac",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/a2988f0e39eacd0659d8856478d58ef5fc04b9ac"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/13dc12fc12f2419cc7189751775c02c330729a09",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/13dc12fc12f2419cc7189751775c02c330729a09",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/13dc12fc12f2419cc7189751775c02c330729a09",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/13dc12fc12f2419cc7189751775c02c330729a09/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c17a1db1d324af3c311c693e6861de3743fbac34",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c17a1db1d324af3c311c693e6861de3743fbac34",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/c17a1db1d324af3c311c693e6861de3743fbac34"
+      }
+    ]
+  },
+  {
+    "sha": "c17a1db1d324af3c311c693e6861de3743fbac34",
+    "node_id": "C_kwDORDv59toAKGMxN2ExZGIxZDMyNGFmM2MzMTFjNjkzZTY4NjFkZTM3NDNmYmFjMzQ",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T09:42:13Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T09:42:13Z"
+      },
+      "message": "插件大优化",
+      "tree": {
+        "sha": "5a9eb90d49d42ec4e71bc5582f5862e67cef1680",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/5a9eb90d49d42ec4e71bc5582f5862e67cef1680"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/c17a1db1d324af3c311c693e6861de3743fbac34",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c17a1db1d324af3c311c693e6861de3743fbac34",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/c17a1db1d324af3c311c693e6861de3743fbac34",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/c17a1db1d324af3c311c693e6861de3743fbac34/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae"
+      }
+    ]
+  },
+  {
+    "sha": "5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+    "node_id": "C_kwDORDv59toAKDVjNDQ4MGIxZWQ0NGM2YjEzNmZjZGI0NmY0YTNhZTBjYWUxNWIyYWU",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T08:38:53Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T08:38:53Z"
+      },
+      "message": "推送更新版本号",
+      "tree": {
+        "sha": "59384047ff6ae35d4437404e93ad77906f12637e",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/59384047ff6ae35d4437404e93ad77906f12637e"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/5c4480b1ed44c6b136fcdb46f4a3ae0cae15b2ae/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b"
+      }
+    ]
+  },
+  {
+    "sha": "7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+    "node_id": "C_kwDORDv59toAKDdmN2Q0NDE5ZjYyNDU3YzFkNmRmY2Y4OTU4M2ZiMGE3OWFhNTM4MGI",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T06:12:17Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T06:12:17Z"
+      },
+      "message": "优化搜索引擎",
+      "tree": {
+        "sha": "f11e14e0b5895c68397b4e395d5e0971d77a83d6",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/f11e14e0b5895c68397b4e395d5e0971d77a83d6"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/7f7d4419f62457c1d6dfcf89583fb0a79aa5380b/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/39abcb266a38ae37b1f775e8abe33cbe7d450e18"
+      }
+    ]
+  },
+  {
+    "sha": "39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+    "node_id": "C_kwDORDv59toAKDM5YWJjYjI2NmEzOGFlMzdiMWY3NzVlOGFiZTMzY2JlN2Q0NTBlMTg",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-08T04:38:35Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-02-08T04:38:35Z"
+      },
+      "message": "Merge pull request #3 from s1yle/dev\n\nfeat: 增强自定义命令模板系统",
+      "tree": {
+        "sha": "2187e906416a2dbdf42ccb7c0446b53ddce8b3fa",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/2187e906416a2dbdf42ccb7c0446b53ddce8b3fa"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJpiBNLCRC1aQ7uu5UhlAAA0LoQAKnAZvdzdFxFp9RaAlE3GDxJ\nrN4vUDKH0aZ/GfrPFHMUiihOpubeqAJkDfCwQZpEYbIC91kU3DxfcTK4nccMhSDw\nWE2svkaxX/IRK/C0zlUDU4/movI/1li8Cr/aARW6E9hTWUd5rs86Wwbu1zih3WZl\nbVan/My4VIP76JqPmF4tpMt4sqJMgbDJc05WBiaze47s17FrYL8zsbiFwdJq8Gsl\nrc0SRY/fe9yqLaQn8jZWFpFsN/0zAKQw+kkxvYCml+ut/hwbb0afeqbOv2P4PABA\nkCbsBvHmd+nJXyGgFVIo8rldAscjyh78YvyJjoWZblKLv9D+ch7TXYHNiweQT61Q\nd9/ENQW17TxEzhdQikSlFQLBsrROUoD6r3q8zJ4xTyweLQZXy1gfxXNb6/zYdDqd\nGOAM6odPgBvoa50+QrgZ8whWycgnkgZvyeo0n42oEUb9NUNbHHO+381XG6zwcgCi\nHPr4dEimUwto30q5prmfvXQKOxW6oKrIhFkQMtc4NofXaeaoqcrEuJnmnCbNS0sZ\ngiD7qDOx8cbUQCdiV6m3pZebgD7ieL6goTYoKiz2s/WEhtMZN/L00taTGXCeGeLa\n8W9BggDB7EVrJJITbDBLu9lQB3BpM5Kg6XimIrWqzld6BYnoEb+jYzreCJ6mMRY/\n9pfEvYw2+PzKaL485vpD\n=2Hsg\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 2187e906416a2dbdf42ccb7c0446b53ddce8b3fa\nparent 9539369b67bbd709971eee945646b5207a6944e8\nparent e00d43d97fc43b7cc295b1fd4631104991bad66e\nauthor 冷曦 <2218872014@qq.com> 1770525515 +0800\ncommitter GitHub <noreply@github.com> 1770525515 +0800\n\nMerge pull request #3 from s1yle/dev\n\nfeat: 增强自定义命令模板系统",
+        "verified_at": "2026-02-08T04:38:36Z"
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/39abcb266a38ae37b1f775e8abe33cbe7d450e18",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/39abcb266a38ae37b1f775e8abe33cbe7d450e18/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9539369b67bbd709971eee945646b5207a6944e8",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/9539369b67bbd709971eee945646b5207a6944e8",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/9539369b67bbd709971eee945646b5207a6944e8"
+      },
+      {
+        "sha": "e00d43d97fc43b7cc295b1fd4631104991bad66e",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/e00d43d97fc43b7cc295b1fd4631104991bad66e",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/e00d43d97fc43b7cc295b1fd4631104991bad66e"
+      }
+    ]
+  },
+  {
+    "sha": "e00d43d97fc43b7cc295b1fd4631104991bad66e",
+    "node_id": "C_kwDORDv59toAKGUwMGQ0M2Q5N2ZjNDNiN2NjMjk1YjFmZDQ2MzExMDQ5OTFiYWQ2NmU",
+    "commit": {
+      "author": {
+        "name": "s1yle",
+        "email": "1373003655@qq.com",
+        "date": "2026-02-07T18:13:57Z"
+      },
+      "committer": {
+        "name": "s1yle",
+        "email": "1373003655@qq.com",
+        "date": "2026-02-07T18:16:27Z"
+      },
+      "message": "feat: 增强自定义命令模板系统\n\n- 为三大管理器实现延迟初始化（CustomCommandManager、UserWatcherManager、ScheduledTaskManager）\n- 支持复杂模板表达式解析（如 ${online ? '在线' : '离线'}）\n- 增强API响应处理，支持点路径字段提取（players.online、players.max）\n- 优化formatApiResponse方法，兼容多种字段提取格式\n- 新增processComplexTemplate方法，实现高级变量替换能力",
+      "tree": {
+        "sha": "2187e906416a2dbdf42ccb7c0446b53ddce8b3fa",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/2187e906416a2dbdf42ccb7c0446b53ddce8b3fa"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/e00d43d97fc43b7cc295b1fd4631104991bad66e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/e00d43d97fc43b7cc295b1fd4631104991bad66e",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/e00d43d97fc43b7cc295b1fd4631104991bad66e",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/e00d43d97fc43b7cc295b1fd4631104991bad66e/comments",
+    "author": {
+      "login": "s1yle",
+      "id": 110319587,
+      "node_id": "U_kgDOBpNX4w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/110319587?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/s1yle",
+      "html_url": "https://github.com/s1yle",
+      "followers_url": "https://api.github.com/users/s1yle/followers",
+      "following_url": "https://api.github.com/users/s1yle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/s1yle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/s1yle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/s1yle/subscriptions",
+      "organizations_url": "https://api.github.com/users/s1yle/orgs",
+      "repos_url": "https://api.github.com/users/s1yle/repos",
+      "events_url": "https://api.github.com/users/s1yle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/s1yle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "s1yle",
+      "id": 110319587,
+      "node_id": "U_kgDOBpNX4w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/110319587?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/s1yle",
+      "html_url": "https://github.com/s1yle",
+      "followers_url": "https://api.github.com/users/s1yle/followers",
+      "following_url": "https://api.github.com/users/s1yle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/s1yle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/s1yle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/s1yle/subscriptions",
+      "organizations_url": "https://api.github.com/users/s1yle/orgs",
+      "repos_url": "https://api.github.com/users/s1yle/repos",
+      "events_url": "https://api.github.com/users/s1yle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/s1yle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9539369b67bbd709971eee945646b5207a6944e8",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/9539369b67bbd709971eee945646b5207a6944e8",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/9539369b67bbd709971eee945646b5207a6944e8"
+      }
+    ]
+  },
+  {
+    "sha": "9539369b67bbd709971eee945646b5207a6944e8",
+    "node_id": "C_kwDORDv59toAKDk1MzkzNjliNjdiYmQ3MDk5NzFlZWU5NDU2NDZiNTIwN2E2OTQ0ZTg",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-06T15:30:25Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-06T15:30:25Z"
+      },
+      "message": "增加版本号动态获取",
+      "tree": {
+        "sha": "5c21114118c52f9fe3f583ac1b058c7784470b49",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/5c21114118c52f9fe3f583ac1b058c7784470b49"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/9539369b67bbd709971eee945646b5207a6944e8",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/9539369b67bbd709971eee945646b5207a6944e8",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/9539369b67bbd709971eee945646b5207a6944e8",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/9539369b67bbd709971eee945646b5207a6944e8/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/622c57c3654d4f89cf295093ab13ce7ee50d38f3"
+      }
+    ]
+  },
+  {
+    "sha": "622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+    "node_id": "C_kwDORDv59toAKDYyMmM1N2MzNjU0ZDRmODljZjI5NTA5M2FiMTNjZTdlZTUwZDM4ZjM",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-05T18:50:47Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-05T18:50:47Z"
+      },
+      "message": "增加，艾特触发机器人选项，艾特机器人无需前缀触发",
+      "tree": {
+        "sha": "f5b94e1a3fb962ee398e8e8f67085b17a8afb6c5",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/f5b94e1a3fb962ee398e8e8f67085b17a8afb6c5"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/622c57c3654d4f89cf295093ab13ce7ee50d38f3",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/622c57c3654d4f89cf295093ab13ce7ee50d38f3/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/2ae1dfef48c7d4c4bf08d214e00e64de1214516f"
+      }
+    ]
+  },
+  {
+    "sha": "2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+    "node_id": "C_kwDORDv59toAKDJhZTFkZmVmNDhjN2Q0YzRiZjA4ZDIxNGUwMGU2NGRlMTIxNDUxNmY",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-04T17:17:09Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-04T17:17:09Z"
+      },
+      "message": "更新 package.json",
+      "tree": {
+        "sha": "cff2b2091349c23426d34c476ba8aac189b95d33",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/cff2b2091349c23426d34c476ba8aac189b95d33"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/2ae1dfef48c7d4c4bf08d214e00e64de1214516f",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/2ae1dfef48c7d4c4bf08d214e00e64de1214516f/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "afbba3066082fb7007ced4efcf095c684dffe7ab",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/afbba3066082fb7007ced4efcf095c684dffe7ab",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/afbba3066082fb7007ced4efcf095c684dffe7ab"
+      }
+    ]
+  },
+  {
+    "sha": "afbba3066082fb7007ced4efcf095c684dffe7ab",
+    "node_id": "C_kwDORDv59toAKGFmYmJhMzA2NjA4MmZiNzAwN2NlZDRlZmNmMDk1YzY4NGRmZmU3YWI",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-04T17:16:28Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-04T17:16:28Z"
+      },
+      "message": "增加自动切换模型逻辑",
+      "tree": {
+        "sha": "df6f5168a331acb0ea62e36baa378f592c4b22a5",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/df6f5168a331acb0ea62e36baa378f592c4b22a5"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/afbba3066082fb7007ced4efcf095c684dffe7ab",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/afbba3066082fb7007ced4efcf095c684dffe7ab",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/afbba3066082fb7007ced4efcf095c684dffe7ab",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/afbba3066082fb7007ced4efcf095c684dffe7ab/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "63854a278066964c7bbf2ffa9a977130bbd5c07c",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/63854a278066964c7bbf2ffa9a977130bbd5c07c",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/63854a278066964c7bbf2ffa9a977130bbd5c07c"
+      }
+    ]
+  },
+  {
+    "sha": "63854a278066964c7bbf2ffa9a977130bbd5c07c",
+    "node_id": "C_kwDORDv59toAKDYzODU0YTI3ODA2Njk2NGM3YmJmMmZmYTlhOTc3MTMwYmJkNWMwN2M",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-01T21:43:49Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-01T21:43:49Z"
+      },
+      "message": "更新提示词，增加文档地址，AI可通过地址查询",
+      "tree": {
+        "sha": "1264d5db2ba8e11ca4d99c8daeefe6d7d8c8d6ac",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/1264d5db2ba8e11ca4d99c8daeefe6d7d8c8d6ac"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/63854a278066964c7bbf2ffa9a977130bbd5c07c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/63854a278066964c7bbf2ffa9a977130bbd5c07c",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/63854a278066964c7bbf2ffa9a977130bbd5c07c",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/63854a278066964c7bbf2ffa9a977130bbd5c07c/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168"
+      }
+    ]
+  },
+  {
+    "sha": "fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+    "node_id": "C_kwDORDv59toAKGZlNGRhNWI1ZTFhYmZmZWJlN2Y0YWIzOWJmZjViZGNiODA4MGExNjg",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-01T07:06:20Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-02-01T07:06:20Z"
+      },
+      "message": "新增支持AI个性设置",
+      "tree": {
+        "sha": "1ba924dc8ab23c37b53fad2906662a570b13c023",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/1ba924dc8ab23c37b53fad2906662a570b13c023"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/fe4da5b5e1abffebe7f4ab39bff5bdcb8080a168/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/ac60bdeb30c9a6c26513c1f6a00530953c438d41"
+      }
+    ]
+  },
+  {
+    "sha": "ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+    "node_id": "C_kwDORDv59toAKGFjNjBiZGViMzBjOWE2YzI2NTEzYzFmNmEwMDUzMDk1M2M0MzhkNDE",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-31T18:45:58Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-31T18:45:58Z"
+      },
+      "message": "新增备用接口，当首模型请求失败，自动切换模型",
+      "tree": {
+        "sha": "405b2043cad1cda1f6c6d4704e76f9ae98af1af8",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/405b2043cad1cda1f6c6d4704e76f9ae98af1af8"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/ac60bdeb30c9a6c26513c1f6a00530953c438d41",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/ac60bdeb30c9a6c26513c1f6a00530953c438d41/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a"
+      }
+    ]
+  },
+  {
+    "sha": "77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+    "node_id": "C_kwDORDv59toAKDc3ZmU5ODg5OGYyZjUwYjc5YWIyOTJlZDI5OWIyZWU5YThmOWNkNmE",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-31T12:22:31Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-31T12:22:31Z"
+      },
+      "message": "优化机器人信息权限，优化napcat得接口支持网络获取，更激进的定时器，轮次默认20轮",
+      "tree": {
+        "sha": "722d2197b515b577f51e6d6f13768cbd8b736979",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/722d2197b515b577f51e6d6f13768cbd8b736979"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/77fe98898f2f50b79ab292ed299b2ee9a8f9cd6a/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/220ea58ce2c61c12a22a6bab6fc7d63f843c644d"
+      }
+    ]
+  },
+  {
+    "sha": "220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+    "node_id": "C_kwDORDv59toAKDIyMGVhNThjZTJjNjFjMTJhMjJhNmJhYjZmYzdkNjNmODQzYzY0NGQ",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T13:49:15Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T13:49:15Z"
+      },
+      "message": "优化消息发送，取改为默认为消息嵌套模式",
+      "tree": {
+        "sha": "800bde071583497907f72920e485b96ad0d807dc",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/800bde071583497907f72920e485b96ad0d807dc"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/220ea58ce2c61c12a22a6bab6fc7d63f843c644d",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/220ea58ce2c61c12a22a6bab6fc7d63f843c644d/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "66dd73c4a6311c05748af62126d578a8c3916d28",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/66dd73c4a6311c05748af62126d578a8c3916d28",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/66dd73c4a6311c05748af62126d578a8c3916d28"
+      }
+    ]
+  },
+  {
+    "sha": "66dd73c4a6311c05748af62126d578a8c3916d28",
+    "node_id": "C_kwDORDv59toAKDY2ZGQ3M2M0YTYzMTFjMDU3NDhhZjYyMTI2ZDU3OGE4YzM5MTZkMjg",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T11:42:49Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T11:42:49Z"
+      },
+      "message": "构建",
+      "tree": {
+        "sha": "e6ba36e7d8206bf61203867d7726f1a474311cfa",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/e6ba36e7d8206bf61203867d7726f1a474311cfa"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/66dd73c4a6311c05748af62126d578a8c3916d28",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/66dd73c4a6311c05748af62126d578a8c3916d28",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/66dd73c4a6311c05748af62126d578a8c3916d28",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/66dd73c4a6311c05748af62126d578a8c3916d28/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/678f938dcf57ba3530c25dc9876d5d1e3459ee44"
+      }
+    ]
+  },
+  {
+    "sha": "678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+    "node_id": "C_kwDORDv59toAKDY3OGY5MzhkY2Y1N2JhMzUzMGMyNWRjOTg3NmQ1ZDFlMzQ1OWVlNDQ",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T11:38:19Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-30T11:38:19Z"
+      },
+      "message": "取指令可设置全部人可用",
+      "tree": {
+        "sha": "8a2bfef7d3ea26642b4810e711dfc2220fb19af9",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/8a2bfef7d3ea26642b4810e711dfc2220fb19af9"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/678f938dcf57ba3530c25dc9876d5d1e3459ee44",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/678f938dcf57ba3530c25dc9876d5d1e3459ee44/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "22d411278186cfa99a5ec2ed483d820bf580fcdc",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/22d411278186cfa99a5ec2ed483d820bf580fcdc",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/22d411278186cfa99a5ec2ed483d820bf580fcdc"
+      }
+    ]
+  },
+  {
+    "sha": "22d411278186cfa99a5ec2ed483d820bf580fcdc",
+    "node_id": "C_kwDORDv59toAKDIyZDQxMTI3ODE4NmNmYTk5YTVlYzJlZDQ4M2Q4MjBiZjU4MGZjZGM",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T14:14:09Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-01-29T14:14:09Z"
+      },
+      "message": "Merge pull request #1 from MliKiowa/patch-1\n\nAdd plugin field to package.json",
+      "tree": {
+        "sha": "1eb2a54a14fa7a3f23d08bf3fd85a1932481ff4a",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/1eb2a54a14fa7a3f23d08bf3fd85a1932481ff4a"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/22d411278186cfa99a5ec2ed483d820bf580fcdc",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJpe2sxCRC1aQ7uu5UhlAAAT4UQAGdycJP7HluNQ/xh76r+deXi\nhKQAz+C/OaRJBzyFeJWZj+jSnsY7VVN1JNb9ffvnTS69/K4uyvcGgOqaELTTukER\neuLZwWsAX5M4RzGNlz/1CE3WWhhtmEnWC1S99/sgcSZh3P7/0yd9snKbDWURkn8g\n3dbcZRcT18/tsbNq0w4Ho/3yK5743j/zECl+gZR5o6TahAzvfP0DoxW3oZHQDVge\nOa+z6VSXnnnua5Kz6L4oXzRTxeuu2Y0z26j5fGuaZGy1+R4/kOoDRV2euePsZRWG\nqB5lnj6GCtsih5NCsWW959uj11YttyoSO1IKShd4g3kPCSdN/ZIl54+cD0kQ1faS\n6n2Ix3afV4CXffr3JsXYMY35YCo2lLuWs0rhIX+3hrWfqFeol6ypLWPox55EzFyT\nF+5unvqsv8sqizh1XxsARKgM8MswdhFgGxBENIMJr9YvAlkRSc6hp9WGUHz8szw8\noBiSU2w8AN22FwsO0zj9F6kXzo4CiOmqIwyANg52oJKu+C50V2d5UF0ctqi7fJW0\njaN3c6l1IctQZ8LwNpPYN6C1UgQgCtPIzebn57Eecn7V2kB2DiEXrBC4xQaDDhwn\n7x+EaVDjyJrAs/nNITWKfd8ldsS4UGfp6z8Ldf9J7DB15wWobVXrYU0rWdGmaqfo\n1B7YJd9hwB9TFUqmf/fA\n=4BQ5\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 1eb2a54a14fa7a3f23d08bf3fd85a1932481ff4a\nparent d658a7a0e5f3f448d012598b50d15b1db16ceb3e\nparent d3655243189d1e8830b605b6705c3d7e789ee140\nauthor 冷曦 <2218872014@qq.com> 1769696049 +0800\ncommitter GitHub <noreply@github.com> 1769696049 +0800\n\nMerge pull request #1 from MliKiowa/patch-1\n\nAdd plugin field to package.json",
+        "verified_at": "2026-01-29T14:14:10Z"
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/22d411278186cfa99a5ec2ed483d820bf580fcdc",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/22d411278186cfa99a5ec2ed483d820bf580fcdc",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/22d411278186cfa99a5ec2ed483d820bf580fcdc/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d658a7a0e5f3f448d012598b50d15b1db16ceb3e"
+      },
+      {
+        "sha": "d3655243189d1e8830b605b6705c3d7e789ee140",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d3655243189d1e8830b605b6705c3d7e789ee140",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d3655243189d1e8830b605b6705c3d7e789ee140"
+      }
+    ]
+  },
+  {
+    "sha": "d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+    "node_id": "C_kwDORDv59toAKGQ2NThhN2EwZTVmM2Y0NDhkMDEyNTk4YjUwZDE1YjFkYjE2Y2ViM2U",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T14:13:11Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T14:13:11Z"
+      },
+      "message": "优化逻辑，试图解决AI有时会重复发送消息问题",
+      "tree": {
+        "sha": "796dc5ad602d90185f30b39bdb9c0b2d4f78c9d5",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/796dc5ad602d90185f30b39bdb9c0b2d4f78c9d5"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d658a7a0e5f3f448d012598b50d15b1db16ceb3e",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d658a7a0e5f3f448d012598b50d15b1db16ceb3e/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e"
+      }
+    ]
+  },
+  {
+    "sha": "62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+    "node_id": "C_kwDORDv59toAKDYyY2M4MThmNGU3OGIwYzlhYjEwMmY3NTViOTY0YjlhOGY0ZGQ1NWU",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T10:25:42Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T10:25:42Z"
+      },
+      "message": "新增可自定义openai接口",
+      "tree": {
+        "sha": "24145d771b6d08c6739f20f7fdbf986625c1bb13",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/24145d771b6d08c6739f20f7fdbf986625c1bb13"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/62cc818f4e78b0c9ab102f755b964b9a8f4dd55e/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb"
+      }
+    ]
+  },
+  {
+    "sha": "d3655243189d1e8830b605b6705c3d7e789ee140",
+    "node_id": "C_kwDORDv59toAKGQzNjU1MjQzMTg5ZDFlODgzMGI2MDViNjcwNWMzZDdlNzg5ZWUxNDA",
+    "commit": {
+      "author": {
+        "name": "手瓜一十雪",
+        "email": "nanaeonn@outlook.com",
+        "date": "2026-01-29T09:15:54Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-01-29T09:15:54Z"
+      },
+      "message": "Add plugin field to package.json",
+      "tree": {
+        "sha": "06edbf1104e1c754f34f8cc2317dc2378df68adb",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/06edbf1104e1c754f34f8cc2317dc2378df68adb"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/d3655243189d1e8830b605b6705c3d7e789ee140",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJpeyVKCRC1aQ7uu5UhlAAAYQ0QABfSB6iT3HoL+Ifdlw/+6i9s\nHC+I8n6GVgxpn3Ea14jkP2II2tTW66tOEyXjbZiuKv2U+Eh3V/9earmmsUqPYCMb\naczG45mYA0lH9HPtzYSaamvGUvT5NvLXCko2KXQVrjBIYVYQWTabVAFm1DFh0Fus\ncJxjLS9M1xqaXtufbjg24eYrSvcAkgPQHiZD9dHN0BW2EmZ++YhB142sc/s3oaxx\nQW4ib9jBgML5JuxBSNezqliiWTDBBJXRs/jOBsTdMekiUzrYBPj2D4Tb344gHiLp\n4fZ880FstvAE+iWrzZCW0FfMIT4lDomC1+JFQmyiHrM0VF490/lndyhgBHoEAhBE\nb6Q4J0zWzsudUJ84pnoaNWxmfmsRZmVTYLDpDfQOsflwZkJztaVVqzeCbE0dVqzo\nt8hKBhFRqvFALdIeeIq/Vrv9RyheVagFCBD4VusK3vSeEGok/1PWImPtwK/U/sl1\nOC8UcPxwUV3MmmRLEyAlucDkgupGTYQFmH6wmFboHHKdRLbN21ubr4IGclMwt+xD\nyhQwhrXVlHGOuz54x78J1wtAsVjJJzELkbvEykhQnntyMTTn1rIkV7ZLezvL/V04\nbduFjNKVqfPU6KoWDdQBkdof2DnoxRRk5Dm9ImurJIrNzAeZ5fYLKAZZwMDi528w\nafuhNFghzHAAkUzZpRjA\n=dulP\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 06edbf1104e1c754f34f8cc2317dc2378df68adb\nparent d144a096a8f94b4c0e79d3845fe5ec56fd12feeb\nauthor 手瓜一十雪 <nanaeonn@outlook.com> 1769678154 +0800\ncommitter GitHub <noreply@github.com> 1769678154 +0800\n\nAdd plugin field to package.json",
+        "verified_at": "2026-01-29T09:15:55Z"
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d3655243189d1e8830b605b6705c3d7e789ee140",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d3655243189d1e8830b605b6705c3d7e789ee140",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d3655243189d1e8830b605b6705c3d7e789ee140/comments",
+    "author": {
+      "login": "MliKiowa",
+      "id": 61873808,
+      "node_id": "MDQ6VXNlcjYxODczODA4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61873808?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MliKiowa",
+      "html_url": "https://github.com/MliKiowa",
+      "followers_url": "https://api.github.com/users/MliKiowa/followers",
+      "following_url": "https://api.github.com/users/MliKiowa/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MliKiowa/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MliKiowa/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MliKiowa/subscriptions",
+      "organizations_url": "https://api.github.com/users/MliKiowa/orgs",
+      "repos_url": "https://api.github.com/users/MliKiowa/repos",
+      "events_url": "https://api.github.com/users/MliKiowa/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MliKiowa/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb"
+      }
+    ]
+  },
+  {
+    "sha": "d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+    "node_id": "C_kwDORDv59toAKGQxNDRhMDk2YThmOTRiNGMwZTc5ZDM4NDVmZTVlYzU2ZmQxMmZlZWI",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T04:13:10Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T04:13:10Z"
+      },
+      "message": "特别优化一下api调用",
+      "tree": {
+        "sha": "0c1ad36d9304480c78f717b4d756184b5d16eb60",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/0c1ad36d9304480c78f717b4d756184b5d16eb60"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/d144a096a8f94b4c0e79d3845fe5ec56fd12feeb/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+        "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/f57995ca3ac248fc2320a011de1f1b2db51e5ec3"
+      }
+    ]
+  },
+  {
+    "sha": "f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+    "node_id": "C_kwDORDv59toAKGY1Nzk5NWNhM2FjMjQ4ZmMyMzIwYTAxMWRlMWYxYjJkYjUxZTVlYzM",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T03:27:28Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-29T03:27:28Z"
+      },
+      "message": "v1.0发布",
+      "tree": {
+        "sha": "22be6009667de38bdf532ba2522d5b52fc47540d",
+        "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/trees/22be6009667de38bdf532ba2522d5b52fc47540d"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/git/commits/f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-aicat/commit/f57995ca3ac248fc2320a011de1f1b2db51e5ec3",
+    "comments_url": "https://api.github.com/repos/lengxi-root/napcat-plugin-aicat/commits/f57995ca3ac248fc2320a011de1f1b2db51e5ec3/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": []
+  }
+]

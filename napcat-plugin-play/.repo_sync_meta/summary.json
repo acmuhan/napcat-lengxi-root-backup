@@ -1,0 +1,17 @@
+{
+  "synced_at_utc": "2026-02-21T12:13:59Z",
+  "repo": {
+    "name": "napcat-plugin-play",
+    "full_name": "lengxi-root/napcat-plugin-play",
+    "html_url": "https://github.com/lengxi-root/napcat-plugin-play",
+    "default_branch": "main"
+  },
+  "counts": {
+    "issues": 1,
+    "commits": 19,
+    "releases": 4
+  },
+  "limits": {
+    "max_items_per_type": 200
+  }
+}

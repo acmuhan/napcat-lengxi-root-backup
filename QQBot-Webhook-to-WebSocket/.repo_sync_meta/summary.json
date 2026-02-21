@@ -1,0 +1,17 @@
+{
+  "synced_at_utc": "2026-02-21T12:14:07Z",
+  "repo": {
+    "name": "QQBot-Webhook-to-WebSocket",
+    "full_name": "lengxi-root/QQBot-Webhook-to-WebSocket",
+    "html_url": "https://github.com/lengxi-root/QQBot-Webhook-to-WebSocket",
+    "default_branch": "main"
+  },
+  "counts": {
+    "issues": 3,
+    "commits": 32,
+    "releases": 0
+  },
+  "limits": {
+    "max_items_per_type": 200
+  }
+}

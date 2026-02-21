@@ -1,0 +1,324 @@
+[
+  {
+    "sha": "cd4037847d97ed249c588a6ec1411da6374cecff",
+    "node_id": "C_kwDOQPQlZNoAKGNkNDAzNzg0N2Q5N2VkMjQ5YzU4OGE2ZWMxNDExZGE2Mzc0Y2VjZmY",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-13T12:41:14Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2026-01-13T12:41:14Z"
+      },
+      "message": "结构化，优化",
+      "tree": {
+        "sha": "c500c9d8f6e7da05cd47e83242d0a16d21864fbd",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/trees/c500c9d8f6e7da05cd47e83242d0a16d21864fbd"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/commits/cd4037847d97ed249c588a6ec1411da6374cecff",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/cd4037847d97ed249c588a6ec1411da6374cecff",
+    "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/cd4037847d97ed249c588a6ec1411da6374cecff",
+    "comments_url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/cd4037847d97ed249c588a6ec1411da6374cecff/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+        "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/ea1ca7cf9620ce1336d12dab53f468ff0e112470"
+      }
+    ]
+  },
+  {
+    "sha": "ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+    "node_id": "C_kwDOQPQlZNoAKGVhMWNhN2NmOTYyMGNlMTMzNmQxMmRhYjUzZjQ2OGZmMGUxMTI0NzA",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-12-15T14:23:21Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-12-15T14:23:21Z"
+      },
+      "message": "细节优化",
+      "tree": {
+        "sha": "5934984735ef4292a8ecbf7c74adb2009d7670ec",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/trees/5934984735ef4292a8ecbf7c74adb2009d7670ec"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/commits/ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+    "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/ea1ca7cf9620ce1336d12dab53f468ff0e112470",
+    "comments_url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/ea1ca7cf9620ce1336d12dab53f468ff0e112470/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "cec12537c1c07461e4a59d5826159a3c3fe3d867",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/cec12537c1c07461e4a59d5826159a3c3fe3d867",
+        "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/cec12537c1c07461e4a59d5826159a3c3fe3d867"
+      }
+    ]
+  },
+  {
+    "sha": "cec12537c1c07461e4a59d5826159a3c3fe3d867",
+    "node_id": "C_kwDOQPQlZNoAKGNlYzEyNTM3YzFjMDc0NjFlNGE1OWQ1ODI2MTU5YTNjM2ZlM2Q4Njc",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-11-07T20:00:56Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-11-07T20:00:56Z"
+      },
+      "message": "增加接管官机代发模式",
+      "tree": {
+        "sha": "e5484b6102bd743edaeff68f64a70a542509a990",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/trees/e5484b6102bd743edaeff68f64a70a542509a990"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/commits/cec12537c1c07461e4a59d5826159a3c3fe3d867",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/cec12537c1c07461e4a59d5826159a3c3fe3d867",
+    "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/cec12537c1c07461e4a59d5826159a3c3fe3d867",
+    "comments_url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/cec12537c1c07461e4a59d5826159a3c3fe3d867/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f92b16ef366972b48919c1f25b9220925241dede",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/f92b16ef366972b48919c1f25b9220925241dede",
+        "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/f92b16ef366972b48919c1f25b9220925241dede"
+      }
+    ]
+  },
+  {
+    "sha": "f92b16ef366972b48919c1f25b9220925241dede",
+    "node_id": "C_kwDOQPQlZNoAKGY5MmIxNmVmMzY2OTcyYjQ4OTE5YzFmMjViOTIyMDkyNTI0MWRlZGU",
+    "commit": {
+      "author": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-11-07T02:58:01Z"
+      },
+      "committer": {
+        "name": "冷曦",
+        "email": "2218872014@qq.com",
+        "date": "2025-11-07T02:58:01Z"
+      },
+      "message": "项目传递，暂时未完成web面板更新",
+      "tree": {
+        "sha": "96fac6303358a188669da9e864f2f5d34964769f",
+        "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/trees/96fac6303358a188669da9e864f2f5d34964769f"
+      },
+      "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/git/commits/f92b16ef366972b48919c1f25b9220925241dede",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/f92b16ef366972b48919c1f25b9220925241dede",
+    "html_url": "https://github.com/lengxi-root/ElainaBot-Onebot/commit/f92b16ef366972b48919c1f25b9220925241dede",
+    "comments_url": "https://api.github.com/repos/lengxi-root/ElainaBot-Onebot/commits/f92b16ef366972b48919c1f25b9220925241dede/comments",
+    "author": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "lengxi-root",
+      "id": 174939133,
+      "node_id": "U_kgDOCm1b_Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174939133?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lengxi-root",
+      "html_url": "https://github.com/lengxi-root",
+      "followers_url": "https://api.github.com/users/lengxi-root/followers",
+      "following_url": "https://api.github.com/users/lengxi-root/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lengxi-root/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lengxi-root/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lengxi-root/subscriptions",
+      "organizations_url": "https://api.github.com/users/lengxi-root/orgs",
+      "repos_url": "https://api.github.com/users/lengxi-root/repos",
+      "events_url": "https://api.github.com/users/lengxi-root/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lengxi-root/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": []
+  }
+]

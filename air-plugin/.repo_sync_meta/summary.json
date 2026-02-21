@@ -1,0 +1,17 @@
+{
+  "synced_at_utc": "2026-02-21T12:13:30Z",
+  "repo": {
+    "name": "air-plugin",
+    "full_name": "lengxi-root/air-plugin",
+    "html_url": "https://github.com/lengxi-root/air-plugin",
+    "default_branch": "main"
+  },
+  "counts": {
+    "issues": 3,
+    "commits": 113,
+    "releases": 0
+  },
+  "limits": {
+    "max_items_per_type": 200
+  }
+}

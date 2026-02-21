@@ -1,0 +1,17 @@
+{
+  "synced_at_utc": "2026-02-21T12:14:11Z",
+  "repo": {
+    "name": "Workflow-plugin",
+    "full_name": "lengxi-root/Workflow-plugin",
+    "html_url": "https://github.com/lengxi-root/Workflow-plugin",
+    "default_branch": "main"
+  },
+  "counts": {
+    "issues": 0,
+    "commits": 3,
+    "releases": 0
+  },
+  "limits": {
+    "max_items_per_type": 200
+  }
+}
